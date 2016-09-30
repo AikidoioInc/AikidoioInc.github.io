@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+  <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
   <body>
     <div style="text-align:center;">
       <h3>Game of the Year 2020</h3>
@@ -15,5 +18,11 @@
         }
       }
     </script>
+    <script>
+$.getJSON("https://www.reddit.com/r/me_irl/top.json", function(kek) {
+var yep = kek.data.children[0].data.url;
+document.body.style.backgroundImage = "url('" + yep + "')";
+});
+</script>
   </body>
 </html>
