@@ -1,1 +1,24 @@
 # Hi I'm our custom css
+
+body {
+    font-size: 12px;
+    margin: 0;
+    padding: 0; }
+
+p {
+    font-size: 15px !important; }
+
+.site {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0; }
+
+.row {
+    width: 100%;
+    margin-bottom: 10px; }
+
+.column {
+    width: 100%; }
+
+a:visited {
+    color: #2ba6cb; }
