@@ -36,5 +36,5 @@ a:visited {
 .top-bar {
   margin-bottom: 20px; }
 
-.menu {
+.menu > li > a {
   padding: 8px !important; }
