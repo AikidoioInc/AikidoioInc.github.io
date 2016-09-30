@@ -15,47 +15,51 @@ title: Game
       <script>
       var canvas = document.getElementById('game');
       var context = canvas.getContext('2d');
-      var centerX = canvas.width / 2;
-      var centerY = canvas.height / 2;
+
+      var x = canvas.width / 2;
+      var y = canvas.height / 2;
       var radius = 15;
 
-      var posX = centerX;
-      var posY = centerY;
+      var dx = 1.0;
+      var dy = 1.5;
 
-      var velX = 1.0;
-      var velY = 1.5;
+      function drawBall() {
+        context.beginPath();
+        context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+        context.fillStyle = "#4286f4";
+        context.fill();
+        context.lineWidth = 2;
+        context.strokeStyle = "#3460a8";
+        context.stroke();
+        context.closePath();
+      }
 
-      context.beginPath();
-      context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-      context.fillStyle = "#4286f4";
-      context.fill();
-      context.lineWidth = 2;
-      context.strokeStyle = "#3460a8";
-      context.stroke();
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawBall();
+        x += dx;
+        y += dy;
+      }
 
-      while (false) {
-        context.moveTo(posX, posY);
-
-        posX += velX;
-        posY += velY;
-
-        if (posX < 0) {
-          posX = 0;
-          velX *= -1;
-        } else if (posX > 800) {
-          posY = 800;
-          velX *= -1;
+      function checkBounds() {
+        if (x < 0) {
+          x = 0;
+          dx *= -1;
+        } else if (x > 800) {
+          x = 800;
+          dx *= -1;
         }
 
-        if (posY < 0) {
-          posY = 0;
-          velY *= -1;
-        } else if (posY > 500) {
-          posY = 500;
-          velY *= -1;
+        if (y < 0) {
+          y = 0;
+          dy *= -1;
+        } else if (y > 500) {
+          y = 500;
+          dy *= -1;
         }
       }
 
+      setInterval(draw, 10);
       </script>
     </canvas>
   </div>
