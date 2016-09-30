@@ -25,7 +25,7 @@ title: Game
 
       function drawBall() {
         context.beginPath();
-        context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+        context.arc(x, y, radius, 0, 2 * Math.PI, false);
         context.fillStyle = "#4286f4";
         context.fill();
         context.lineWidth = 2;
@@ -46,16 +46,16 @@ title: Game
         if (x < 0) {
           x = 0;
           dx *= -1;
-        } else if (x > 800) {
-          x = 800;
+        } else if (x > canvas.width) {
+          x = canvas.width;
           dx *= -1;
         }
 
         if (y < 0) {
           y = 0;
           dy *= -1;
-        } else if (y > 500) {
-          y = 500;
+        } else if (y > canvas.height) {
+          y = canvas.height;
           dy *= -1;
         }
       }
