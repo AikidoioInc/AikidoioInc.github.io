@@ -23,6 +23,14 @@ title: Game
       var dx = 1.0;
       var dy = 1.5;
 
+      var uPress = false;
+      var dPress = false;
+      var lPress = false;
+      var rPress = false;
+
+      document.addEventListener("keydown", keyDownHandler, false);
+      document.addEventListener("keyup", keyUpHandler, false);
+
       function drawBall() {
         context.beginPath();
         context.arc(x, y, radius, 0, 2 * Math.PI, false);
@@ -38,25 +46,49 @@ title: Game
         context.clearRect(0, 0, canvas.width, canvas.height);
         drawBall();
         checkBounds();
+        addInput();
         x += dx;
         y += dy;
       }
 
+      function addInput() {
+        if (rPress) dx += 0.1;
+        if (lPress) dx -= 0.1;
+        if (uPress) dy += 0.1;
+        if (dPress) dy -= 0.1;
+      }
+
       function checkBounds() {
-        if (x < 6) {
-          x = 6;
-          dx *= -1;
-        } else if (x > canvas.width-6) {
-          x = canvas.width-6;
+        if (x < 6 || x > canvas.width-6) {
           dx *= -1;
         }
 
-        if (y < 6) {
-          y = 6;
+        if (y < 6 || y > canvas.height-6) {
           dy *= -1;
-        } else if (y > canvas.height-6) {
-          y = canvas.height-6;
-          dy *= -1;
+        }
+      }
+
+      function keyDownHandler(e) {
+        if (e.keyCode == 87) {
+          uPress = true;
+        } else if (e.keyCode == 83) {
+          dPress = true;
+        } else if (e.keyCode == 65) {
+          lPress = true;
+        } else if (e.keyCode == 68) {
+          rPress = true;
+        }
+      }
+
+      function keyUpHandler(e) {
+        if (e.keyCode == 87) {
+          uPress = false;
+        } else if (e.keyCode == 83) {
+          dPress = false;
+        } else if (e.keyCode == 65) {
+          lPress = false;
+        } else if (e.keyCode == 68) {
+          rPress = false;
         }
       }
 
