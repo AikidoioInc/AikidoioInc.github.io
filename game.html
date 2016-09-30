@@ -10,20 +10,20 @@ title: Game
 </div>
 
 <div class="row">
-  <div class="small-12 columns" style="text-align:center;">
+  <div class="small-12 columns" style="text-align:center;border:2px;border-color:#222222">
     <canvas id="game" width="800" height="500%" style="background-color:#888888">
       <script>
       var canvas = document.getElementById('game');
       var context = canvas.getContext('2d');
       var centerX = canvas.width / 2;
       var centerY = canvas.height / 2;
-      var radius = 70;
+      var radius = 15;
 
       context.beginPath();
       context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
       context.fillStyle = "#4286f4";
       context.fill();
-      context.lineWidth = 5;
+      context.lineWidth = 2;
       context.strokeStyle = "#3460a8";
       context.stroke();
       </script>
