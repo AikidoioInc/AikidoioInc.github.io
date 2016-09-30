@@ -15,5 +15,12 @@
         }
       }
     </script>
+    <script>
+$.getJSON("https://www.reddit.com/r/me_irl/top.json", function(kek) {
+var yep = kek.data.children[0].data.url;
+document.body.style.backgroundImage = "url('" + yep + "')";
+alert(kek.data.children.length);
+});
+</script>
   </body>
 </html>
