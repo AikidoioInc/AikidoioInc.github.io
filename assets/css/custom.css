@@ -34,7 +34,7 @@ a:visited {
 #
 
 .top-bar {
-  padding-bottom: 20px; }
+  margin-bottom: 20px; }
 
 .menu {
-  margin: 8px; }
+  padding: 8px !important; }
