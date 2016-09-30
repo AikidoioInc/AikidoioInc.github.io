@@ -11,25 +11,23 @@ title: Home
 
 <div class="row">
   <div class="small-12 columns">
-    <div style="width:100%;padding-top:56.25%;">
-      <canvas id="game" width="100%" height="100%">
-        <script>
-        var canvas = document.getElementById('game');
-        var context = canvas.getContext('2d');
-        var centerX = canvas.width / 2;
-        var centerY = canvas.height / 2;
-        var radius = 70;
+    <canvas id="game" width="100%" height="80%">
+      <script>
+      var canvas = document.getElementById('game');
+      var context = canvas.getContext('2d');
+      var centerX = canvas.width / 2;
+      var centerY = canvas.height / 2;
+      var radius = 70;
 
-        context.beginPath();
-        context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-        context.fillStyle = 'green';
-        context.fill();
-        context.lineWidth = 5;
-        context.strokeStyle = '#003300';
-        context.stroke();
-        </script>
-      </canvas>
-    </div>
+      context.beginPath();
+      context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+      context.fillStyle = 'green';
+      context.fill();
+      context.lineWidth = 5;
+      context.strokeStyle = '#003300';
+      context.stroke();
+      </script>
+    </canvas>
   </div>
 </div>
 
