@@ -18,7 +18,7 @@ title: Game
 
       var x = canvas.width / 2;
       var y = canvas.height / 2;
-      var radius = 15;
+      var radius = 12;
 
       var dx = 1.0;
       var dy = 1.5;
@@ -43,19 +43,19 @@ title: Game
       }
 
       function checkBounds() {
-        if (x < 0) {
-          x = 0;
+        if (x < 6) {
+          x = 6;
           dx *= -1;
-        } else if (x > canvas.width) {
-          x = canvas.width;
+        } else if (x > canvas.width-6) {
+          x = canvas.width-6;
           dx *= -1;
         }
 
-        if (y < 0) {
-          y = 0;
+        if (y < 6) {
+          y = 6;
           dy *= -1;
-        } else if (y > canvas.height) {
-          y = canvas.height;
+        } else if (y > canvas.height-6) {
+          y = canvas.height-6;
           dy *= -1;
         }
       }
