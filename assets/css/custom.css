@@ -32,5 +32,12 @@ a:visited {
 #
 # Navigation
 #
-a.button:visited {
-  color:#dddddd !important; }
+
+.button {
+  color:#dddddd; }
+
+.button:visited {
+    color:#dddddd; }
+
+.button:hover {
+  color:#dddddd; }
