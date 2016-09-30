@@ -32,5 +32,5 @@ a:visited {
 #
 # Navigation
 #
-a:visited > .button {
-  color:#dddddd; }
+a.button {
+  color:#dddddd !important; }
