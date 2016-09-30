@@ -1,28 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-</head>
-  <body>
-    <div style="text-align:center;">
-      <h3>Game of the Year 2020</h3>
-      <button onclick="box()">Play Game</button>
-    </div>
-    <script>
-      function box() {
-        var c = confirm("o shit I'm a game");
-        if (c == true) {
-          alert("u win");
-        } else {
-          alert("wow how do you suck this much");
-        }
-      }
-    </script>
-    <script>
-$.getJSON("https://www.reddit.com/r/me_irl/top.json", function(kek) {
-var yep = kek.data.children[0].data.url;
-document.body.style.backgroundImage = "url('" + yep + "')";
-});
-</script>
-  </body>
-</html>
+---
+layout: default
+title: Home
+---
