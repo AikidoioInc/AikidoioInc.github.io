@@ -18,7 +18,7 @@ p {
   font-size: 15px !important; }
 
 .site {
-  cursor: url(/assets/img/spencer.png), crosshair;
+  cursor: url(/assets/img/spencer.png), url(/assets/img/spencer.io) crosshair;
   width: 100%;
   margin-top: 0;
   margin-bottom: 0; }
