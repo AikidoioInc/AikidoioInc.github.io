@@ -63,7 +63,7 @@ title: Game
           for (var gy = 0; gy < canvas.height/gridSize; gy++) {
             var mx = ((x-canvas.width/2)/gridSize) + gx;
             var my = gy;
-            console.log(map[mx][my]);
+            // map[mx][my] is undefined for some reason
             if (map[mx][my] == 1) {
               context.fillStyle = "#333333";
               context.fillRect(gx*gridSize, canvas.height - gy*gridSize, gridSize, gridSize);
