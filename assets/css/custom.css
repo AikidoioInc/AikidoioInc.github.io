@@ -2,6 +2,10 @@
 # GENERAL CHANGES
 #
 
+body {
+  cursor: url("/assets/spencer.png"), default;
+}
+
 h2 {
   text-align: center;
 }
