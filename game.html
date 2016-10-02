@@ -62,7 +62,7 @@ title: Game
         for (var gx = 0; gx < canvas.width/gridSize; gx++) {
           for (var gy = 0; gy < canvas.height/gridSize; gy++) {
             if (map[gx][gy] == 1) {
-              context.fillStyle = "#dddddd";
+              context.fillStyle = "#333333";
               context.fillRect(x+(gx*gridSize-canvas.width/2), y+(gy*gridSize-canvas.height/2), gridSize, gridSize);
             }
           }
