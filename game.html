@@ -5,7 +5,7 @@ title: Game
 
 <div class="row">
   <div class="small-12 columns">
-    <h2>Game of the Year 2025</h2>
+    <h2>Game of the Year 2030</h2>
   </div>
 </div>
 
@@ -16,9 +16,12 @@ title: Game
       var canvas = document.getElementById('game');
       var context = canvas.getContext('2d');
 
-      var x = canvas.width / 2;
-      var y = canvas.height / 2;
-      var radius = 12;
+      var map = new Array(1000).fill(new Array(100));
+      var gridSize = 5;
+
+      var x = (map.length * gridSize)/2;
+      var y = (map[0].length * gridSize)/2;
+      var radius = 10;
 
       var dx = 0.0;
       var dy = 0.0;
@@ -31,9 +34,22 @@ title: Game
       document.addEventListener("keydown", keyDownHandler, false);
       document.addEventListener("keyup", keyUpHandler, false);
 
+      function cycle() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        drawBall();
+        drawMap();
+        checkBounds();
+        checkCollisions();
+        addInput();
+        x += dx;
+        y += dy;
+
+        dy -= 0.05;
+      }
+
       function drawBall() {
         context.beginPath();
-        context.arc(x, canvas.height-y, radius, 0, 2 * Math.PI, false);
+        context.arc(x, map[0].length*gridSize-y, radius, 0, 2 * Math.PI, false);
         context.fillStyle = "#4286f4";
         context.fill();
         context.lineWidth = 2;
@@ -42,42 +58,62 @@ title: Game
         context.closePath();
       }
 
-      function cycle() {
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        drawBall();
-        checkBounds();
-        addInput();
-        x += dx;
-        y += dy;
-
-        dy -= 0.05;
-
-        //dx = (dx/Math.abs(dx))*(Math.abs(dx)-0.005);
-        //dy = (dy/Math.abs(dy))*(Math.abs(dy)-0.005);
+      function drawMap() {
+        for (int gx = 0; gx < canvas.width/gridSize; gx++) {
+          for (int gy = 0; gy < canvas.height/gridSize; gy++) {
+            if (map[gx][gy] == 1) {
+              context.fillStyle = "#dddddd";
+              context.fillRect(x+(gx*gridSize-canvas.width/2), y+(gy*gridSize-canvas.height/2), gridSize, gridSize);
+            }
+          }
+        }
       }
 
       function addInput() {
-        if (rPress) dx += 0.1;
-        if (lPress) dx -= 0.1;
-        if (uPress) dy += 0.1;
-        if (dPress) dy -= 0.1;
+        if (rPress) dx += 0.01;
+        if (lPress) dx -= 0.01;
+        if (uPress) dy += 0.01;
+        if (dPress) dy -= 0.01;
+      }
+
+      function checkCollisions() {
+
       }
 
       function checkBounds() {
-        if (x < 6) {
+        if (x < radius/2) {
           dx *= -1;
-          x = 6;
-        } else if (x > canvas.width-6) {
+          x = radius/2;
+        } else if (x > map.length*gridSize-radius/2) {
           dx *= -1;
-          x = canvas.width-6;
+          x = map.length*gridSize-radius/2;
         }
 
-        if (y < 6) {
-          dy *= -1;
-          y = 6;
-        } else if (y > canvas.height-6) {
-          dy *= -1;
-          y = canvas.height-6;
+        if (y - dy < 0) {
+          y = map.length*gridSize - (y - dy);
+        } else if (y + dy > map.length*gridSize) {
+          y = 0 + (y + dy - map.length*gridSize);
+        }
+      }
+
+      function generateMap() {
+        for (int x = 0; x < map.length; x++) {
+          map[x][0] = 1;
+          map[x][map[x].length] = 1;
+        }
+
+        for (int x = 0; x < map.length; x++) {
+          for (int y = 0; y < map.length; y++) {
+            if (map[x-1][y] == 1) {
+              if (Math.random() < 0.5) {
+                map[x][y] = 1;
+              }
+            } else {
+              if (Math.random() < 0.005) {
+                map[x][y] = 1;
+              }
+            }
+          }
         }
       }
 
