@@ -84,9 +84,9 @@ title: Game
         if (y < radius/2) {
           dy *= -1;
           y = radius/2;
-        } else if (y > map.length*gridSize-radius/2) {
+        } else if (y > map.height*gridSize-radius/2) {
           dy *= -1;
-          y = map.length*gridSize-radius/2;
+          y = map.height*gridSize-radius/2;
         }
 
         if (x - dx < 0) {
