@@ -2,7 +2,7 @@
 # GENERAL CHANGES
 #
 
-body {
+.content {
   cursor: url("/assets/img/spencer.png"), crosshair;
 }
 
