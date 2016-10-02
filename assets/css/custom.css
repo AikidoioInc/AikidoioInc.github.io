@@ -3,7 +3,7 @@
 #
 
 .content {
-  cursor: url("/assets/img/spencer.png"), crosshair;
+  cursor: url(/assets/img/spencer.png), crosshair;
 }
 
 h2 {
