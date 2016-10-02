@@ -64,12 +64,20 @@ title: Game
       }
 
       function checkBounds() {
-        if (x < 6 || x > canvas.width-6) {
+        if (x < 6) {
           dx *= -1;
+          x = 6;
+        } else if (x > canvas.width-6) {
+          dx *= -1;
+          x = canvas.width-6;
         }
 
-        if (y < 6 || y > canvas.height-6) {
+        if (y < 6) {
           dy *= -1;
+          y = 6;
+        } else if (y > canvas.height-6) {
+          dy *= -1;
+          y = canvas.height-6;
         }
       }
 
