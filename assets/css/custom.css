@@ -2,10 +2,6 @@
 # GENERAL CHANGES
 #
 
-.site {
-  cursor: url(/assets/img/spencer.png), crosshair;
-}
-
 h2 {
   text-align: center;
 }
@@ -22,6 +18,7 @@ p {
   font-size: 15px !important; }
 
 .site {
+  cursor: url(/assets/img/spencer.png), crosshair;
   width: 100%;
   margin-top: 0;
   margin-bottom: 0; }
