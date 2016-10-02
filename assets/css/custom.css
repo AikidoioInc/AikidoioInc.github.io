@@ -3,7 +3,7 @@
 #
 
 body {
-  cursor: url("/assets/img/spencer.png"), default;
+  cursor: url("/assets/img/spencer.png"), crosshair;
 }
 
 h2 {
