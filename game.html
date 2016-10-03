@@ -61,10 +61,8 @@ title: Game
       function drawMap() {
         for (var gx = ((x-canvas.width/2)/gridSize + map.length)%map.length; gx < ((x+canvas.width/2)/gridSize + map.length)%map.length; gx++) {
           for (var gy = 0; gy < canvas.height/gridSize; gy++) {
-            var mx = ((x-canvas.width/2)/gridSize) + gx;
-            var my = gy;
-            // map[mx][my] is undefined for some reason
-            if (map[mx][my] == 1) {
+            console.log(map[gx][gy]);
+            if (map[gx][gy] == 1) {
               context.fillStyle = "#333333";
               context.fillRect(gx*gridSize-(x+canvas.width/2), canvas.height - gy*gridSize, gridSize, gridSize);
             }
