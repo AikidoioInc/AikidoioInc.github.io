@@ -36,8 +36,8 @@ title: Game
 
       function cycle() {
         context.clearRect(0, 0, canvas.width, canvas.height);
-        drawMap();
         drawBall();
+        drawMap();
         checkBounds();
         checkCollisions();
         addInput();
@@ -59,14 +59,14 @@ title: Game
       }
 
       function drawMap() {
-        for (var gx = 0; gx < canvas.width/gridSize; gx++) {
+        for (var gx = ((x-canvas.width/2)/gridSize + map.length)%map.length; gx < ((x+canvas.width/2)/gridSize + map.length)%map.length; gx++) {
           for (var gy = 0; gy < canvas.height/gridSize; gy++) {
             var mx = ((x-canvas.width/2)/gridSize) + gx;
             var my = gy;
             // map[mx][my] is undefined for some reason
             if (map[mx][my] == 1) {
               context.fillStyle = "#333333";
-              context.fillRect(gx*gridSize, canvas.height - gy*gridSize, gridSize, gridSize);
+              context.fillRect(gx*gridSize-(x+canvas.width/2), canvas.height - gy*gridSize, gridSize, gridSize);
             }
           }
         }
