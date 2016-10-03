@@ -32,13 +32,6 @@ p {
 a:visited {
   color: #2ba6cb; }
 
-html {
-  cursor: url(/assets/img/spencer.ico), default;
-}
-a:hover {
-  cursor: url(/assets/img/rafi.ico), pointer;
-}
-
 #
 # Navigation
 #
