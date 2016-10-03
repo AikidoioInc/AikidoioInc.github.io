@@ -35,6 +35,9 @@ a:visited {
 html {
   cursor: url(/assets/img/spencer.ico), default;
 }
+a:hover {
+  cursor: url(/assets/img/rafi.ico), pointer;
+}
 
 #
 # Navigation
