@@ -32,8 +32,11 @@ p {
 a:visited {
   color: #2ba6cb; }
 
-html {
+body {
   cursor: url(/assets/img/spencer.ico), default;
+}
+a href {
+  cursor: url(/assets/img/rafi.ico), pointer;
 }
 
 #
