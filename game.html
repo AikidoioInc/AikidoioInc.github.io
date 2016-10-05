@@ -17,6 +17,7 @@ title: Game
       var context = canvas.getContext('2d');
 
       var map = new Array(1000).fill(new Array(100));
+      generateMap();
       var gridSize = 5;
 
       var x = (map.length * gridSize)/2;
