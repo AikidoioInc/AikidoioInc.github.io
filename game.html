@@ -16,7 +16,7 @@ title: Game
       var canvas = document.getElementById('game');
       var context = canvas.getContext('2d');
 
-      var map = new Array(1000).fill(new Array(100));
+      var map = new Array(5).fill(new Array(2));
       generateMap();
       var gridSize = 5;
 
@@ -36,6 +36,7 @@ title: Game
       document.addEventListener("keyup", keyUpHandler, false);
 
       console.log(map[0].length);
+      console.log(map);
 
       function cycle() {
         context.clearRect(0, 0, canvas.width, canvas.height);
