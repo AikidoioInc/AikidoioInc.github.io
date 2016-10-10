@@ -16,7 +16,10 @@ title: Game
       var canvas = document.getElementById('game');
       var context = canvas.getContext('2d');
 
-      var map = new Array(5).fill(new Array(2));
+      var map = [];
+      for (int i = 0; i < 5; i++) {
+        map[i] = new Array(2);
+      }
       generateMap();
       var gridSize = 5;
 
