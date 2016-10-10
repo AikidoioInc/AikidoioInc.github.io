@@ -87,7 +87,7 @@ title: Game
           y = radius/2;
         } else if (y > canvas.height-radius/2) {
           dy *= -1;
-          y = map[0].length*gridSize-radius/2;
+          y = canvas.height-radius/2;
         }
 
         if (x - dx < 0) {
