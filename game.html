@@ -50,7 +50,7 @@ title: Game
 
       function drawBall() {
         context.beginPath();
-        context.arc(canvas.width/2, map[0].length*gridSize/2, radius, 0, 2 * Math.PI, false);
+        context.arc(canvas.width/2, canvas.height/2, radius, 0, 2 * Math.PI, false);
         context.fillStyle = "#4286f4";
         context.fill();
         context.lineWidth = 2;
