@@ -18,7 +18,10 @@ title: Game
 
       var map = [];
       for (int i = 0; i < 5; i++) {
-        map[i] = new Array(2);
+        map[i] = [];
+        for (int j = 0; j < 2; j++) {
+          map[i][j] = 0;
+        }
       }
       generateMap();
       var gridSize = 5;
