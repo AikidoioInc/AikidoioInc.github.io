@@ -17,13 +17,13 @@ title: Game
       var context = canvas.getContext('2d');
 
       var map = [];
-      for (var i = 0; i < 5; i++) {
+      for (var i = 0; i < 1000; i++) {
         map[i] = [];
-        for (var j = 0; j < 2; j++) {
+        for (var j = 0; j < 100; j++) {
           map[i][j] = 0;
         }
       }
-      // generateMap();
+      generateMap();
       var gridSize = 5;
 
       var x = (map.length * gridSize)/2;
@@ -113,7 +113,7 @@ title: Game
         }
 
         for (x = 0; x < map.length; x++) {
-          for (var y = 0; y < map.length; y++) {
+          for (var y = 0; y < map[x].length; y++) {
             if (x == 0 || map[x-1][y] == 0) {
               if (Math.random() < 0.01) {
                 map[x][y] = 1;
