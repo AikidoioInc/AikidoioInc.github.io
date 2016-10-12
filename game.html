@@ -106,6 +106,18 @@ title: Game
         } else if (x + dx > map.length*gridSize) {
           x = 0 + (x + dx - map.length*gridSize);
         }
+
+        if (dx > 20) {
+          dx = 20;
+        } else if (dx < -20) {
+          dx = -20;
+        }
+
+        if (dy > 20) {
+          dy = 20;
+        } else if (dy < -20) {
+          dy = -20;
+        }
       }
 
       function generateMap() {
