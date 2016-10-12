@@ -134,11 +134,11 @@ title: Game
                 map[x][y] = 1;
                 current++;
               }
-            } else if (current < 10) {
+            } else if (current < 20) {
               map[x][y] = 1;
               current++;
             } else {
-              if (Math.random() < 1.0/(current-10)) {
+              if (Math.random() > 0.05(current-20))) {
                 map[x][y] = 1;
                 current++;
               } else {
