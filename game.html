@@ -130,7 +130,7 @@ title: Game
           var filled = 0;
           var empty = 0;
           for (x = 0; x < map.length; x++) {
-            if (current == 0) {
+            if (filled == 0) {
               if (empty > 10 && Math.random() < 0.05) {
                 map[x][y] = 1;
                 filled++;
@@ -138,11 +138,11 @@ title: Game
               } else {
                 empty++;
               }
-            } else if (current < 20) {
+            } else if (filled < 20) {
               map[x][y] = 1;
               filled++;
             } else {
-              if (Math.random() > 0.05*(current-20)) {
+              if (Math.random() > 0.05*(filled-20)) {
                 map[x][y] = 1;
                 filled++;
               } else {
