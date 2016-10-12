@@ -70,7 +70,7 @@ title: Game
           for (var gy = 0; gy < canvas.height/gridSize; gy++) {
             if (map[gx][gy] == 1) {
               context.fillStyle = "#333333";
-              context.fillRect(gx*gridSize-(x-canvas.width/2), 5, gridSize, gridSize);
+              context.fillRect(gx*gridSize-(x-canvas.width/2), canvas.height - gy*gridSize, gridSize, gridSize);
               context.fillRect(5, 5, gridSize, gridSize);
             }
           }
