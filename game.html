@@ -13,7 +13,7 @@ title: Game
   <div class="small-12 columns" style="text-align:center">
     <canvas id="game" width="800" height="500" style="background-color:#bbbbbb; border-style:solid; border-width:2px; border-color:#888888;">
       <script>
-      console.log("Aikido.io v1.0.3");
+      console.log("Aikido.io v0.0.4");
 
       var canvas = document.getElementById('game');
       var context = canvas.getContext('2d');
@@ -134,11 +134,11 @@ title: Game
                 map[x][y] = 1;
                 current++;
               }
-            } else if (current < 8) {
+            } else if (current < 10) {
               map[x][y] = 1;
               current++;
             } else {
-              if (Math.random() < 0.5/current) {
+              if (Math.random() < 1.0/(current-10)) {
                 map[x][y] = 1;
                 current++;
               } else {
