@@ -44,7 +44,7 @@ title: Game
       function cycle() {
         context.clearRect(0, 0, canvas.width, canvas.height);
         drawBall();
-        // drawMap();
+        drawMap();
         checkBounds();
         checkCollisions();
         addInput();
@@ -66,7 +66,8 @@ title: Game
       }
 
       function drawMap() {
-        for (var gx = ((x-canvas.width/2)/gridSize + map.length)%map.length; gx < ((x+canvas.width/2)/gridSize + map.length)%map.length; gx++) {
+        for (var gx = 0; gx < map.length; gx++) {
+        // for (var gx = ((x-canvas.width/2)/gridSize + map.length)%map.length; gx < ((x+canvas.width/2)/gridSize + map.length)%map.length; gx++) {
           for (var gy = 0; gy < canvas.height/gridSize; gy++) {
             if (map[gx][gy] == 1) {
               context.fillStyle = "#333333";
