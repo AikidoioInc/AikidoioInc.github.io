@@ -15,7 +15,7 @@ title: Game
   <div class="small-12 columns" style="text-align:center">
     <canvas id="game" width="800" height="500" style="background-color:#bbbbbb; border-style:solid; border-width:2px; border-color:#888888;">
       <script>
-      console.log("Aikido.io v0.0.5");
+      console.log("Aikido.io v0.1.0");
 
       var score = 0;
       var highscore = 0;
@@ -63,11 +63,10 @@ title: Game
       }
 
       function drawScore() {
-        canvas.font="20px Arial";
-        canvas.fillStyle="#E8E6E8";
-        var temp = "Score: " + score;
-        canvas.fillText(temp, 10, 10);
-        // canvas.fillText("Highscore: " + highscore, 10, 35);
+        context.font="20px Arial";
+        context.fillStyle="#E8E6E8";
+        context.fillText("Score: " + score, 10, 10);
+        context.fillText("Highscore: " + highscore, 10, 35);
       }
 
       function drawBall() {
