@@ -70,8 +70,8 @@ title: Game
       function drawScore() {
         context.font="20px Arial";
         context.fillStyle="#E8E6E8";
-        context.fillText("Score: " + score, 10, 25);
-        context.fillText("Highscore: " + highscore, 10, 50);
+        context.fillText("Score: " + Math.round(score), 10, 25);
+        context.fillText("Highscore: " + Math.round(highscore), 10, 50);
         context.font="45px Arial";
         context.fillText(Math.round((inside/cyclenum)*100) + "%", 700, 45);
       }
@@ -121,11 +121,11 @@ title: Game
 
       function checkScore() {
         if (y < 100 || y > 400) {
-          score += -.025*dx;
+          score += -.025*Math.abs(dx);
         } else if (y < 200 || y > 300) {
-          score += -.005*dx;
+          score += -.005*Math.abs(dx);
         } else {
-          score += .005*dx;
+          score += .005*Math.abs(dx);
           inside++;
         }
 
