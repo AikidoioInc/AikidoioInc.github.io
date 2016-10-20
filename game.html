@@ -20,6 +20,9 @@ title: Game
       var score = 0;
       var highscore = 0;
 
+      var inside = 0;
+      var cyclenum = 0;
+
       var canvas = document.getElementById('game');
       var context = canvas.getContext('2d');
 
@@ -61,6 +64,7 @@ title: Game
         y += dy;
 
         dy -= 0.05;
+        cyclenum++;
       }
 
       function drawScore() {
@@ -68,6 +72,8 @@ title: Game
         context.fillStyle="#E8E6E8";
         context.fillText("Score: " + score, 10, 25);
         context.fillText("Highscore: " + highscore, 10, 50);
+        context.font="45px Arial";
+        context.fillText(Math.round((inside/cyclenum)*100) + "%", 720, 25);
       }
 
       function drawBall() {
@@ -120,6 +126,7 @@ title: Game
           score += -1;
         } else {
           score += 1;
+          inside++;
         }
 
         if (score > highscore) {
