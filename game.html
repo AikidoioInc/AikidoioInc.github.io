@@ -65,8 +65,9 @@ title: Game
       function drawScore() {
         canvas.font="20px Arial";
         canvas.fillStyle="#E8E6E8";
-        canvas.fillText("Score: " + score, 10, 10);
-        canvas.fillText("Highscore: " + highscore, 10, 35);
+        var temp = "Score: " + score;
+        canvas.fillText(temp, 10, 10);
+        // canvas.fillText("Highscore: " + highscore, 10, 35);
       }
 
       function drawBall() {
