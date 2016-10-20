@@ -3,7 +3,7 @@ layout: default
 title: Game
 ---
 
-<audio src="/assets/audio/Initial_D_Deja_Vu.mp3" autoplay><h3>Update your browser</h3></audio>
+<audio src="/assets/audio/Initial_D_Deja_Vu.mp3" autoplay loop><h3>Update your browser</h3></audio>
 
 <div class="row">
   <div class="small-12 columns">
@@ -16,6 +16,9 @@ title: Game
     <canvas id="game" width="800" height="500" style="background-color:#bbbbbb; border-style:solid; border-width:2px; border-color:#888888;">
       <script>
       console.log("Aikido.io v0.0.5");
+
+      var score = 0;
+      var highscore = 0;
 
       var canvas = document.getElementById('game');
       var context = canvas.getContext('2d');
@@ -49,6 +52,7 @@ title: Game
         context.clearRect(0, 0, canvas.width, canvas.height);
         drawMap();
         drawBall();
+        drawScore();
         checkBounds();
         checkCollisions();
         addInput();
@@ -58,18 +62,36 @@ title: Game
         dy -= 0.05;
       }
 
+      function drawScore() {
+        canvas.font="20px Arial";
+        canvas.fillStyle="#E8E6E8";
+        canvas.fillText("Score: " + score, 10, 10);
+        canvas.fillText("Highscore: " + highscore, 10, 35);
+      }
+
       function drawBall() {
         context.beginPath();
         context.arc(canvas.width/2, canvas.height - y, radius, 0, 2 * Math.PI, false);
-        context.fillStyle = "#4286f4";
+        context.fillStyle="#4286f4";
         context.fill();
         context.lineWidth = 2;
-        context.strokeStyle = "#3460a8";
+        context.strokeStyle="#3460a8";
         context.stroke();
         context.closePath();
       }
 
       function drawMap() {
+        context.fillstyle="#FF6464";
+        context.fillRect(0, 0, canvas.width, 100);
+        context.fillRect(400, 0, canvas.width, 100);
+
+        context.fillstyle="#FFCE73";
+        context.fillRect(100, 0, canvas.width, 100);
+        context.fillRect(300, 0, canvas.width, 100);
+
+        context.fillstyle="#7DFF8E";
+        context.fillRect(200, 0, canvas.width, 100);
+
         for (var gx = 0; gx < map.length; gx++) {
         // for (var gx = ((x-canvas.width/2)/gridSize + map.length)%map.length; gx < ((x+canvas.width/2)/gridSize + map.length)%map.length; gx++) {
           for (var gy = 0; gy < canvas.height/gridSize; gy++) {
@@ -88,6 +110,20 @@ title: Game
         if (lPress) dx -= 0.1;
         if (uPress) dy += 0.1;
         if (dPress) dy -= 0.1;
+      }
+
+      function checkScore() {
+        if (y < 100 || y > 400) {
+          score -= -5;
+        } else if (y < 200 || y > 300) {
+          score -= -1;
+        } else {
+          score += 1;
+        }
+
+        if (score > highscore) {
+          highscore = score;
+        }
       }
 
       function checkCollisions() {
