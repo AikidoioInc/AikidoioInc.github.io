@@ -3,6 +3,8 @@ layout: default
 title: Game
 ---
 
+<audio src="/assets/audio/Initial_D_Deja_Vu.mp3" autoplay loop><h3>Update your browser</h3></audio>
+
 <div class="row">
   <div class="small-12 columns">
     <h2>Game of the Year 2030</h2>
@@ -13,7 +15,13 @@ title: Game
   <div class="small-12 columns" style="text-align:center">
     <canvas id="game" width="800" height="500" style="background-color:#bbbbbb; border-style:solid; border-width:2px; border-color:#888888;">
       <script>
-      console.log("Aikido.io v0.0.5");
+      console.log("Aikido.io v0.1.1");
+
+      var score = 0;
+      var highscore = 0;
+
+      var inside = 0;
+      var cyclenum = 10;
 
       var canvas = document.getElementById('game');
       var context = canvas.getContext('2d');
@@ -47,27 +55,50 @@ title: Game
         context.clearRect(0, 0, canvas.width, canvas.height);
         drawMap();
         drawBall();
+        drawScore();
         checkBounds();
         checkCollisions();
+        checkScore();
         addInput();
         x += dx;
         y += dy;
 
         dy -= 0.05;
+        cyclenum++;
+      }
+
+      function drawScore() {
+        context.font="20px Arial";
+        context.fillStyle="#E8E6E8";
+        context.fillText("Score: " + Math.round(score), 10, 25);
+        context.fillText("Highscore: " + Math.round(highscore), 10, 50);
+        context.font="45px Arial";
+        context.fillText(Math.round((inside/cyclenum)*100) + "%", 680, 45);
       }
 
       function drawBall() {
         context.beginPath();
         context.arc(canvas.width/2, canvas.height - y, radius, 0, 2 * Math.PI, false);
-        context.fillStyle = "#4286f4";
+        context.fillStyle="#4286f4";
         context.fill();
         context.lineWidth = 2;
-        context.strokeStyle = "#3460a8";
+        context.strokeStyle="#3460a8";
         context.stroke();
         context.closePath();
       }
 
       function drawMap() {
+        context.fillStyle="#FF6464";
+        context.fillRect(0, 000, canvas.width, 100);
+        context.fillRect(0, 400, canvas.width, 100);
+
+        context.fillStyle="#FFCE73";
+        context.fillRect(0, 300, canvas.width, 100);
+        context.fillRect(0, 100, canvas.width, 100);
+
+        context.fillStyle="#7DFF8E";
+        context.fillRect(0, 200, canvas.width, 100);
+
         for (var gx = 0; gx < map.length; gx++) {
         // for (var gx = ((x-canvas.width/2)/gridSize + map.length)%map.length; gx < ((x+canvas.width/2)/gridSize + map.length)%map.length; gx++) {
           for (var gy = 0; gy < canvas.height/gridSize; gy++) {
@@ -86,6 +117,21 @@ title: Game
         if (lPress) dx -= 0.1;
         if (uPress) dy += 0.1;
         if (dPress) dy -= 0.1;
+      }
+
+      function checkScore() {
+        if (y < 100 || y > 400) {
+          score += -.025*Math.abs(dx);
+        } else if (y < 200 || y > 300) {
+          score += -.005*Math.abs(dx);
+        } else {
+          score += .005*Math.abs(dx);
+          inside++;
+        }
+
+        if (score > highscore) {
+          highscore = score;
+        }
       }
 
       function checkCollisions() {
@@ -185,6 +231,6 @@ title: Game
 
 <div class="row">
   <div class="small-12 columns">
-    <h6>Sorry mobile folks, no mobile support</h6>
+    <h6>Use WASD to move. Stay in the green. Faster you move, more you score.</h6>
   </div>
 </div>
