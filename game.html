@@ -115,7 +115,7 @@ title: Game
 
         for (var gx = 0; gx < numHorzBars; gx++) {
           for (var gy = 0; gy < numVertBars; gy++) {
-            context.fillRect(x%(canvas.width/(numHorzBars))+canvas.width/numHorzBars, canvas.height - gy*(canvas.height/numVertBars), canvas.width/numHorzBars, gridSize);
+            context.fillRect(x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars, canvas.height - gy*(canvas.height/numVertBars), canvas.width/numHorzBars, gridSize);
           }
         }
       }
