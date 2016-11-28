@@ -2,9 +2,9 @@
 layout: default
 title: Game
 ---
-
+<!--
 <audio src="/assets/audio/Initial_D_Deja_Vu.mp3" autoplay loop><h3>Update your browser</h3></audio>
-
+-->
 <div class="row">
   <div class="small-12 columns">
     <h2>Game of the Year 2030</h2>
@@ -33,7 +33,7 @@ title: Game
           map[i][j] = 0;
         }
       }
-      generateMap();
+      // generateMap();
       var gridSize = 5;
 
       var x = (map.length * gridSize)/2;
@@ -99,15 +99,23 @@ title: Game
         context.fillStyle="#7DFF8E";
         context.fillRect(0, 200, canvas.width, 100);
 
-        for (var gx = 0; gx < map.length; gx++) {
-        // for (var gx = ((x-canvas.width/2)/gridSize + map.length)%map.length; gx < ((x+canvas.width/2)/gridSize + map.length)%map.length; gx++) {
-          for (var gy = 0; gy < canvas.height/gridSize; gy++) {
-            if (map[gx][gy] == 1) {
-              context.fillStyle = "#333333";
-              context.fillRect(gx*gridSize-(x-canvas.width/2), canvas.height - gy*gridSize - gridSize, gridSize, gridSize);
-              context.fillRect((gx+map.length)*gridSize-(x-canvas.width/2), canvas.height - gy*gridSize - gridSize, gridSize, gridSize);
-              context.fillRect((gx-map.length)*gridSize-(x-canvas.width/2), canvas.height - gy*gridSize - gridSize, gridSize, gridSize);
-            }
+        // COMPLICATED MAP
+
+        // for (var gx = 0; gx < map.length; gx++) {
+        //   for (var gy = 0; gy < canvas.height/gridSize; gy++) {
+        //     if (map[gx][gy] == 1) {
+        //       context.fillStyle = "#333333";
+        //       context.fillRect(gx*gridSize-(x-canvas.width/2), canvas.height - gy*gridSize - gridSize, gridSize, gridSize);
+        //       context.fillRect((gx+map.length)*gridSize-(x-canvas.width/2), canvas.height - gy*gridSize - gridSize, gridSize, gridSize);
+        //       context.fillRect((gx-map.length)*gridSize-(x-canvas.width/2), canvas.height - gy*gridSize - gridSize, gridSize, gridSize);
+        //     }
+        //   }
+        var numHorzBars = 4;
+        var numVertBars = 4;
+
+        for (var gx = 0; gx < numHorzBars; gx++) {
+          for (var gy = 0; gy < numVertBars; gy++) {
+            context.fillRect((x/gridSize)%(canvas.width/(numHorzBars*2))+canvas.width/numHorzBars, canvas.height - gy*(canvas.height/numVertBars), canvas.width/numHorzBars, gridSize);
           }
         }
       }
