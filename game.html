@@ -113,7 +113,7 @@ title: Game
         var numHorzBars = 4;
         var numVertBars = 5;
 
-        for (var gx = 0; gx < numHorzBars; gx++) {
+        for (var gx = -1; gx < numHorzBars; gx++) {
           for (var gy = 0; gy < numVertBars; gy++) {
             context.fillRect(canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars), canvas.height - (gy*(canvas.height/numVertBars)+2), canvas.width/(2*numHorzBars), gridSize);
           }
