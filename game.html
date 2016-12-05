@@ -89,7 +89,7 @@ title: Game
 
         var mu = 6.0;
 
-        if (onGround && Math.abs(dx) > mu && !rPress && !lPress) dx -= ((dx>0)?mu:-1*mu);
+        if (onGround && Math.abs(dx) > mu && ((!rPress && !lPress) || (rPress && dx < 0) || (lPress && dx > 0))) dx -= ((dx>0)?mu:-1*mu);
         if (onGround && Math.abs(dx) <= mu && !rPress && !lPress) dx = 0;
 
         if (dx > 0) faceR = true;
