@@ -77,14 +77,17 @@ title: Game
       }
 
       function drawBall() {
-        context.beginPath();
-        context.arc(canvas.width/2, canvas.height - y, radius, 0, 2 * Math.PI, false);
-        context.fillStyle="#4286f4";
-        context.fill();
-        context.lineWidth = 2;
-        context.strokeStyle="#3460a8";
-        context.stroke();
-        context.closePath();
+        var img=document.getElementById("/assets/img/character.png");
+        context.drawImage(img, canvas.width/2, canvas.height - y, radius*2, radius*2)
+
+        // context.beginPath();
+        // context.arc(canvas.width/2, canvas.height - y, radius, 0, 2 * Math.PI, false);
+        // context.fillStyle="#4286f4";
+        // context.fill();
+        // context.lineWidth = 2;
+        // context.strokeStyle="#3460a8";
+        // context.stroke();
+        // context.closePath();
       }
 
       function drawMap() {
