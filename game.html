@@ -89,6 +89,7 @@ title: Game
         for (var gy = 1; gy < numVertBars; gy++) {
           if (y > canvas.height - (gy*(canvas.height/numVertBars)) - size || y < canvas.height - (gy*(canvas.height/numVertBars)) + size) {
             dy = 0;
+            console.log("intersect");
           }
         }
       }
