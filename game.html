@@ -24,17 +24,12 @@ title: Game
       var canvas = document.getElementById('game');
       var context = canvas.getContext('2d');
 
-      var map = [];
-      for (var i = 0; i < 1000; i++) {
-        map[i] = [];
-        for (var j = 0; j < 100; j++) {
-          map[i][j] = 0;
-        }
-      }
+      var numHorzBars = 4;
+      var numVertBars = 5;
 
       var gridSize = 5;
 
-      var x = (map.length * gridSize)/2;
+      var x = canvas.width/2;
       var y = 0;
 
       var dx = 0.0;
@@ -72,9 +67,6 @@ title: Game
       function drawMap() {
         context.fillStyle = "#333333";
 
-        var numHorzBars = 4;
-        var numVertBars = 5;
-
         for (var gx = 0; gx < numHorzBars+1; gx++) {
           for (var gy = 0; gy < numVertBars; gy++) {
             context.fillRect(canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars), canvas.height - (gy*(canvas.height/numVertBars)), canvas.width/(2*numHorzBars), gridSize);
@@ -109,9 +101,9 @@ title: Game
         }
 
         if (x - dx < 0) {
-          x = map.length*gridSize - (x - dx);
-        } else if (x + dx > map.length*gridSize) {
-          x = 0 + (x + dx - map.length*gridSize);
+          x = canvas.width - (x - dx);
+        } else if (x + dx > canvas.width) {
+          x = 0 + (x + dx - canvas.width);
         }
 
         if (dx > 20) {
@@ -124,39 +116,6 @@ title: Game
           dy = 20;
         } else if (dy < -20) {
           dy = -20;
-        }
-      }
-
-      function generateMap() {
-        for (var x = 0; x < map.length; x++) {
-          map[x][0] = 1;
-          map[x][map[x].length-1] = 1;
-        }
-
-        for (var y = 0; y < map[0].length; y += 20) {
-          var filled = 0;
-          var empty = 0;
-          for (x = 0; x < map.length; x++) {
-            if (filled == 0) {
-              if (empty > 10 && Math.random() < 0.05) {
-                map[x][y] = 1;
-                filled++;
-                empty = 0;
-              } else {
-                empty++;
-              }
-            } else if (filled < 20) {
-              map[x][y] = 1;
-              filled++;
-            } else {
-              if (Math.random() > 0.05*(filled-20)) {
-                map[x][y] = 1;
-                filled++;
-              } else {
-                filled = 0;
-              }
-            }
-          }
         }
       }
 
