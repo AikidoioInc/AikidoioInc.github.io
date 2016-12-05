@@ -93,9 +93,9 @@ title: Game
       }
 
       function checkBounds() {
-        if (y < size/2) {
+        if (y < 0) {
           dy = 0;
-          y = size;
+          y = 0;
         } else if (y > canvas.height-size) {
           dy = 0;
           y = canvas.height-size;
