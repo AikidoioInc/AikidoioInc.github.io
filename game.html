@@ -97,24 +97,20 @@ title: Game
       }
 
       function checkCollisions() {
-        for (var gy = 1; gy < numVertBars; gy++) {
-          if (dy > 0 && y >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize - size && y <= canvas.height - (gy*(canvas.height/numVertBars)) - size) {
-            if (var gx = 0; gx < numHorzBars+1; gx++) {
-              if (x >= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars) && x <= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars + canvas.width/(2*numHorzBars))) {
+        if (var gx = 0; gx < numHorzBars+1; gx++) {
+          if (x >= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars) && x <= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars + canvas.width/(2*numHorzBars))) {
+            for (var gy = 1; gy < numVertBars; gy++) {
+              if (dy > 0 && y >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize - size && y <= canvas.height - (gy*(canvas.height/numVertBars)) - size) {
+                console.log("up intersect");
                 dy = 0;
               }
             }
-            console.log("up intersect");
           }
 
-          // if (dy < 0 && y >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize && y <= canvas.height - (gy*(canvas.height/numVertBars))) {
-          //   if (var gx = 0; gx < numHorzBars+1; gx++) {
           //     if (x >= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars) && x <= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars + canvas.width/(2*numHorzBars))) {
+          //       console.log("down intersect");
           //       dy = 0;
           //     }
-          //   }
-          //   console.log("down intersect");
-          // }
         }
       }
 
