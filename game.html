@@ -77,7 +77,8 @@ title: Game
       }
 
       function drawBall() {
-        var img=document.getElementById("assets/img/character.png");
+        var img = new Image();
+        img.src = "/assets/img/character.png";
         context.drawImage(img, canvas.width/2, canvas.height - y, radius*2, radius*2);
 
         // context.beginPath();
