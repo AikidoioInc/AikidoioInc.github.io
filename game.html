@@ -60,7 +60,8 @@ title: Game
 
       function drawPerson() {
         var img = new Image();
-        img.src = "/assets/img/chad.png";
+        if (dx<=0) img.src = "/assets/img/chadL.png";
+        if (dx>=0) img.src = "/assets/img/chadR.png";
         context.drawImage(img, canvas.width/2 - size/2, canvas.height - y - size, size, size);
       }
 
