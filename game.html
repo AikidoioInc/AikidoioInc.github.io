@@ -35,6 +35,7 @@ title: Game
       var faceR = true;
       var dx = 0.0;
       var dy = 0.0;
+      var maxd = 20.0
 
       var size = 60;
       var onGround = true;
@@ -79,8 +80,8 @@ title: Game
       function addInput() {
         var accel = 0.2;
 
-        if (rPress) dx += accel;
-        if (lPress) dx -= accel;
+        if (rPress) dx += accel * Math.abs(((maxd - dx)/maxd));
+        if (lPress) dx -= accel * Math.abs(((maxd - dx)/maxd));
         if (uPress && onGround) dy = 5;
 
         // FLYING POWERS
@@ -122,16 +123,16 @@ title: Game
           x = 0 + (x + dx - canvas.width);
         }
 
-        if (dx > 20) {
-          dx = 20;
-        } else if (dx < -20) {
-          dx = -20;
+        if (dx > maxd) {
+          dx = maxd;
+        } else if (dx < -maxd) {
+          dx = -maxd;
         }
 
-        if (dy > 20) {
-          dy = 20;
-        } else if (dy < -20) {
-          dy = -20;
+        if (dy > maxd) {
+          dy = maxd;
+        } else if (dy < -maxd) {
+          dy = -maxd;
         }
       }
 
