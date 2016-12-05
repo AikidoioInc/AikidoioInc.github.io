@@ -33,7 +33,7 @@ title: Game
           map[i][j] = 0;
         }
       }
-      // generateMap();
+
       var gridSize = 5;
 
       var x = (map.length * gridSize)/2;
@@ -43,8 +43,8 @@ title: Game
       var dx = 0.0;
       var dy = 0.0;
 
+      var onGround = true;
       var uPress = false;
-      var dPress = false;
       var lPress = false;
       var rPress = false;
 
@@ -54,11 +54,9 @@ title: Game
       function cycle() {
         context.clearRect(0, 0, canvas.width, canvas.height);
         drawMap();
-        drawBall();
-        drawScore();
+        drawPerson();
         checkBounds();
         checkCollisions();
-        checkScore();
         addInput();
         x += dx;
         y += dy;
@@ -67,53 +65,15 @@ title: Game
         cyclenum++;
       }
 
-      function drawScore() {
-        context.font="20px Arial";
-        context.fillStyle="#E8E6E8";
-        context.fillText("Score: " + Math.round(score), 10, 25);
-        context.fillText("Highscore: " + Math.round(highscore), 10, 50);
-        context.font="45px Arial";
-        context.fillText(Math.round((inside/cyclenum)*100) + "%", 680, 45);
-      }
-
-      function drawBall() {
+      function drawPerson() {
         var img = new Image();
-        img.src = "/assets/img/character.png";
+        img.src = "/assets/img/chad.png";
         context.drawImage(img, canvas.width/2 - radius, canvas.height - y - radius, radius*2, radius*2);
-
-        // context.beginPath();
-        // context.arc(canvas.width/2, canvas.height - y, radius, 0, 2 * Math.PI, false);
-        // context.fillStyle="#4286f4";
-        // context.fill();
-        // context.lineWidth = 2;
-        // context.strokeStyle="#3460a8";
-        // context.stroke();
-        // context.closePath();
       }
 
       function drawMap() {
-        context.fillStyle="#FF6464";
-        context.fillRect(0, 000, canvas.width, 100);
-        context.fillRect(0, 400, canvas.width, 100);
+        context.fillStyle = "#333333";
 
-        context.fillStyle="#FFCE73";
-        context.fillRect(0, 300, canvas.width, 100);
-        context.fillRect(0, 100, canvas.width, 100);
-
-        context.fillStyle="#7DFF8E";
-        context.fillRect(0, 200, canvas.width, 100);
-
-        // COMPLICATED MAP
-
-        // for (var gx = 0; gx < map.length; gx++) {
-        //   for (var gy = 0; gy < canvas.height/gridSize; gy++) {
-        //     if (map[gx][gy] == 1) {
-              context.fillStyle = "#333333";
-        //       context.fillRect(gx*gridSize-(x-canvas.width/2), canvas.height - gy*gridSize - gridSize, gridSize, gridSize);
-        //       context.fillRect((gx+map.length)*gridSize-(x-canvas.width/2), canvas.height - gy*gridSize - gridSize, gridSize, gridSize);
-        //       context.fillRect((gx-map.length)*gridSize-(x-canvas.width/2), canvas.height - gy*gridSize - gridSize, gridSize, gridSize);
-        //     }
-        //   }
         var numHorzBars = 4;
         var numVertBars = 5;
 
@@ -128,22 +88,6 @@ title: Game
         if (rPress) dx += 0.1;
         if (lPress) dx -= 0.1;
         if (uPress) dy += 0.1;
-        if (dPress) dy -= 0.1;
-      }
-
-      function checkScore() {
-        if (y < 100 || y > 400) {
-          score += -.025*Math.abs(dx);
-        } else if (y < 200 || y > 300) {
-          score += -.005*Math.abs(dx);
-        } else {
-          score += .005*Math.abs(dx);
-          inside++;
-        }
-
-        if (score > highscore) {
-          highscore = score;
-        }
       }
 
       function checkCollisions() {
@@ -214,8 +158,6 @@ title: Game
       function keyDownHandler(e) {
         if (e.keyCode == 87) {
           uPress = true;
-        } else if (e.keyCode == 83) {
-          dPress = true;
         } else if (e.keyCode == 65) {
           lPress = true;
         } else if (e.keyCode == 68) {
@@ -226,8 +168,6 @@ title: Game
       function keyUpHandler(e) {
         if (e.keyCode == 87) {
           uPress = false;
-        } else if (e.keyCode == 83) {
-          dPress = false;
         } else if (e.keyCode == 65) {
           lPress = false;
         } else if (e.keyCode == 68) {
@@ -243,6 +183,6 @@ title: Game
 
 <div class="row">
   <div class="small-12 columns">
-    <h6>Use WASD to move. Stay in the green. Faster you move, more you score.</h6>
+    <h6>Use WASD to move.</h6>
   </div>
 </div>
