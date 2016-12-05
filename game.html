@@ -88,7 +88,7 @@ title: Game
         if (uPress && onGround) dy = 5;
         // if (uPress) dy += 0.2;
 
-        // if (onGround) dx -= (Math.abs(dx)/dx)*0.05;
+        if (onGround) dx -= (x>0?1:-1)*0.05;
       }
 
       function checkCollisions() {
