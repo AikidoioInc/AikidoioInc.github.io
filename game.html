@@ -79,7 +79,7 @@ title: Game
       function drawBall() {
         var img = new Image();
         img.src = "/assets/img/character.png";
-        context.drawImage(img, canvas.width/2, canvas.height - y, radius*2, radius*2);
+        context.drawImage(img, canvas.width/2 - radius, canvas.height - y - radius, radius*2, radius*2);
 
         // context.beginPath();
         // context.arc(canvas.width/2, canvas.height - y, radius, 0, 2 * Math.PI, false);
