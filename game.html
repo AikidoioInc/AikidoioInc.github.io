@@ -84,8 +84,10 @@ title: Game
         // FLYING POWERS
         // if (uPress) dy += 0.2;
 
-        if (onGround && Math.abs(dx) > 0.05) dx -= ((dx>0)?0.05:-0.05);
-        if (Math.abs(dx) < 0.05) dx = 0;
+        var mu = 0.05;
+
+        if (onGround && Math.abs(dx) > mu) dx -= ((dx>0)?mu:-1*mu);
+        if (Math.abs(dx) < mu) dx = 0;
 
         if (dx > 0) faceR = true;
         if (dx < 0) faceR = false;
