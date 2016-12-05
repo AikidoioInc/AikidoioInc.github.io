@@ -88,8 +88,8 @@ title: Game
 
         var mu = 10.0;
 
-        if (onGround && Math.abs(dx) > force - mu) dx -= ((dx>0)?mu:-1*mu);
-        if (Math.abs(dx) < force - mu) dx = 0;
+        if (onGround && Math.abs(dx) > mu) dx -= ((dx>0)?mu:-1*mu);
+        if (Math.abs(dx) < mu && !rPress && !lPress) dx = 0;
 
         if (dx > 0) faceR = true;
         if (dx < 0) faceR = false;
