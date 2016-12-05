@@ -85,10 +85,10 @@ title: Game
       function addInput() {
         if (rPress) dx += 0.1;
         if (lPress) dx -= 0.1;
-        // if (uPress && onGround) dy = 10;
-        if (uPress) dy += 0.2;
+        if (uPress && onGround) dy = 10;
+        // if (uPress) dy += 0.2;
 
-        // if (onGround)
+        if (onGround) dx -= (Math.abs(dx)/dx)*0.05;
       }
 
       function checkCollisions() {
@@ -187,6 +187,6 @@ title: Game
 
 <div class="row">
   <div class="small-12 columns">
-    <h6>Use WASD to move.</h6>
+    <h6>Use WAS to move.</h6>
   </div>
 </div>
