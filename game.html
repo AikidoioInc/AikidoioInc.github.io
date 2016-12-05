@@ -82,8 +82,8 @@ title: Game
 
         console.log(dx);
 
-        if (rPress) dx += accel * Math.abs(((maxd - dx)/maxd));
-        if (lPress) dx -= accel * Math.abs(((maxd - dx)/maxd));
+        if (rPress) dx += accel * ((maxd - Math.abs(dx))/maxd);
+        if (lPress) dx -= accel * ((maxd - Math.abs(dx))/maxd);
         if (uPress && onGround) dy = 5;
 
         // FLYING POWERS
