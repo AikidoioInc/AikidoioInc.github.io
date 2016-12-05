@@ -43,6 +43,8 @@ title: Game
       var lPress = false;
       var rPress = false;
 
+      var mu = 6.0;
+
       document.addEventListener("keydown", keyDownHandler, false);
       document.addEventListener("keyup", keyUpHandler, false);
 
@@ -87,11 +89,6 @@ title: Game
         // FLYING POWERS
         // if (uPress) dy += 0.2;
 
-        var mu = 6.0;
-
-        if (onGround && Math.abs(dx) > mu && ((!rPress && !lPress) || (rPress && dx < 0) || (lPress && dx > 0))) dx -= ((dx>0)?mu:-1*mu);
-        if (onGround && Math.abs(dx) <= mu && !rPress && !lPress) dx = 0;
-
         if (dx > 0) faceR = true;
         if (dx < 0) faceR = false;
       }
@@ -110,11 +107,17 @@ title: Game
             for (var gy = 1; gy < numVertBars; gy++) {
               if (dy < 0 && y >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize && y <= canvas.height - (gy*(canvas.height/numVertBars))) {
                 console.log("down intersect");
+                friction();
                 dy = 0;
               }
             }
           }
         }
+      }
+
+      function friction() {
+        if (onGround && Math.abs(dx) > mu && ((!rPress && !lPress) || (rPress && dx < 0) || (lPress && dx > 0))) dx -= ((dx>0)?mu:-1*mu);
+        if (onGround && Math.abs(dx) <= mu && !rPress && !lPress) dx = 0;
       }
 
       function checkBounds() {
