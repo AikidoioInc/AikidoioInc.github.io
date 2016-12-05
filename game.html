@@ -77,18 +77,18 @@ title: Game
       }
 
       function addInput() {
-        var force = 10.2;
+        var accel = 0.2;
 
-        if (rPress) dx += force;
-        if (lPress) dx -= force;
+        if (rPress) dx += accel;
+        if (lPress) dx -= accel;
         if (uPress && onGround) dy = 5;
 
         // FLYING POWERS
         // if (uPress) dy += 0.2;
 
-        var mu = 10.0;
+        var mu = 6.0;
 
-        if (onGround && Math.abs(dx) > mu) dx -= ((dx>0)?mu:-1*mu);
+        if (onGround && Math.abs(dx) > mu && !rPress && !lPress) dx -= ((dx>0)?mu:-1*mu);
         if (onGround && Math.abs(dx) <= mu && !rPress && !lPress) dx = 0;
 
         if (dx > 0) faceR = true;
