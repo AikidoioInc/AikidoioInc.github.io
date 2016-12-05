@@ -94,11 +94,11 @@ title: Game
 
       function checkBounds() {
         if (y < size/2) {
-          dy *= -1;
-          y = size/2;
-        } else if (y > canvas.height-size/2) {
-          dy *= -1;
-          y = canvas.height-size/2;
+          dy = 0;
+          y = size;
+        } else if (y > canvas.height-size) {
+          dy = 0;
+          y = canvas.height-size;
         }
 
         if (x - dx < 0) {
