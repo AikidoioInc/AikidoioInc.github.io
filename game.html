@@ -72,9 +72,9 @@ title: Game
       function drawMap() {
         context.fillStyle = "#333333";
 
-        for (var gx = 0; gx < 2*numHorzBars+1; gx++) {
+        for (var gx = 0; gx < numHorzBars+1; gx++) {
           for (var gy = 1; gy < numVertBars; gy++) {
-            context.fillRect(canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/2*numHorzBars), canvas.height - (gy*(canvas.height/numVertBars)), canvas.width/(4*numHorzBars), gridSize);
+            context.fillRect(canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars), canvas.height - (gy*(canvas.height/numVertBars)), canvas.width/(4*numHorzBars), gridSize);
           }
         }
       }
