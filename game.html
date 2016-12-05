@@ -85,7 +85,7 @@ title: Game
       function addInput() {
         if (rPress) dx += 0.1;
         if (lPress) dx -= 0.1;
-        if (uPress) dy += 0.1;
+        if (uPress && onGround) dy = 1;
       }
 
       function checkCollisions() {
@@ -96,9 +96,12 @@ title: Game
         if (y < 0) {
           dy = 0;
           y = 0;
+          onGround = true;
         } else if (y > canvas.height-size) {
           dy = 0;
           y = canvas.height-size;
+        } else {
+          onGround = false;
         }
 
         if (x - dx < 0) {
