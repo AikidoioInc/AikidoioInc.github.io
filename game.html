@@ -77,14 +77,14 @@ title: Game
       }
 
       function addInput() {
-        if (rPress) dx += 160.2;
-        if (lPress) dx -= 160.2;
+        if (rPress) dx += 10.2;
+        if (lPress) dx -= 10.2;
         if (uPress && onGround) dy = 5;
 
         // FLYING POWERS
         // if (uPress) dy += 0.2;
 
-        var mu = 0.1;
+        var mu = 10.0;
 
         if (onGround && Math.abs(dx) > mu) dx -= ((dx>0)?mu:-1*mu);
         if (Math.abs(dx) < mu) dx = 0;
@@ -120,16 +120,10 @@ title: Game
           x = 0 + (x + dx - canvas.width);
         }
 
-        // if (dx > 20) {
-        //   dx = 20;
-        // } else if (dx < -20) {
-        //   dx = -20;
-        // }
-
-        if (dx > 100) {
-          dx = 100;
-        } else if (dx < -100) {
-          dx = -100;
+        if (dx > 20) {
+          dx = 20;
+        } else if (dx < -20) {
+          dx = -20;
         }
 
         if (dy > 20) {
