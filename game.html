@@ -38,7 +38,7 @@ title: Game
 
       var x = (map.length * gridSize)/2;
       var y = (canvas.height)/2;
-      var radius = 10;
+      var radius = 50;
 
       var dx = 0.0;
       var dy = 0.0;
@@ -79,7 +79,7 @@ title: Game
       function drawBall() {
         var img = new Image();
         img.src = "/assets/img/character.png";
-        context.drawImage(img, canvas.width/2, canvas.height - y, 100, 100);
+        context.drawImage(img, canvas.width/2, canvas.height - y, radius*2, radius*2);
 
         // context.beginPath();
         // context.arc(canvas.width/2, canvas.height - y, radius, 0, 2 * Math.PI, false);
