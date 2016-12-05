@@ -88,7 +88,7 @@ title: Game
         if (uPress && onGround) dy = 5;
         // if (uPress) dy += 0.2;
 
-        if (onGround && Math.abs(dx) > 0.05) dx -= (x>0?1:-1)*0.05;
+        if (onGround && Math.abs(dx) > 0.05) dx -= x>0?0.05:-0.05;
         if (Math.abs(dx) < 0.05) dx = 0;
       }
 
