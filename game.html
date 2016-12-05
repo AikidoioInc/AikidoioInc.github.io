@@ -129,6 +129,7 @@ title: Game
           y = 0;
           onGround = true;
         } else if (y > canvas.height-size) {
+          win();
           dy = 0;
           y = canvas.height-size;
         } else {
@@ -174,6 +175,15 @@ title: Game
         }
       }
 
+      function win() {
+        var r = confirm("You win!");
+        if (r) {
+          window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+        } else {
+          window.open("https://www.youtube.com/watch?v=SLEdsI731J4");
+        }
+      }
+
       setInterval(cycle, 10);
       </script>
     </canvas>
@@ -182,6 +192,6 @@ title: Game
 
 <div class="row">
   <div class="small-12 columns">
-    <h6>Use WAD to move.</h6>
+    <h6>Use WAD to move. Try to make it to the top</h6>
   </div>
 </div>
