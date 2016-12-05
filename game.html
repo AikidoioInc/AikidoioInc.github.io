@@ -77,8 +77,10 @@ title: Game
       }
 
       function addInput() {
-        if (rPress) dx += 10.2;
-        if (lPress) dx -= 10.2;
+        var force = 10.2;
+
+        if (rPress) dx += force;
+        if (lPress) dx -= force;
         if (uPress && onGround) dy = 5;
 
         // FLYING POWERS
@@ -87,7 +89,7 @@ title: Game
         var mu = 10.0;
 
         if (onGround && Math.abs(dx) > mu) dx -= ((dx>0)?mu:-1*mu);
-        if (Math.abs(dx) < mu) dx = 0;
+        if (Math.abs(dx) < force - mu) dx = 0;
 
         if (dx > 0) faceR = true;
         if (dx < 0) faceR = false;
