@@ -80,8 +80,6 @@ title: Game
       function addInput() {
         var accel = 0.2;
 
-        console.log(dx);
-
         if (rPress) dx += accel * ((maxd - Math.abs(dx))/maxd);
         if (lPress) dx -= accel * ((maxd - Math.abs(dx))/maxd);
         if (uPress && onGround) dy = 5;
