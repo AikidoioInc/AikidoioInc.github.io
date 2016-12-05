@@ -61,7 +61,7 @@ title: Game
 
       function drawPerson() {
         var img = new Image();
-        if (faceR) img.src = "/assets/img/chadL.png";
+        if (!faceR) img.src = "/assets/img/chadL.png";
         if (faceR) img.src = "/assets/img/chadR.png";
         context.drawImage(img, canvas.width/2 - size/2, canvas.height - y - size, size, size);
       }
