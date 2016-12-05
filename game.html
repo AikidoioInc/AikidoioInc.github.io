@@ -98,7 +98,7 @@ title: Game
 
       function checkCollisions() {
         for (var gy = 1; gy < numVertBars; gy++) {
-          if (dy > 0 && y == canvas.height - (gy*(canvas.height/numVertBars)) - gridSize) {
+          if (dy > 0 && y >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize) {
             dy = 0;
             console.log("intersect");
           }
