@@ -84,7 +84,7 @@ title: Game
         // FLYING POWERS
         // if (uPress) dy += 0.2;
 
-        var mu = 140.0;
+        var mu = 0.1;
 
         if (onGround && Math.abs(dx) > mu) dx -= ((dx>0)?mu:-1*mu);
         if (Math.abs(dx) < mu) dx = 0;
