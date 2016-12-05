@@ -107,7 +107,7 @@ title: Game
             }
           }
 
-          if (x >= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars) && x <= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars + canvas.width/(2*numHorzBars))) {
+          if (x <= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars) && x >= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars + canvas.width/(2*numHorzBars))) {
             console.log("down intersect");
             dy = 0;
           }
