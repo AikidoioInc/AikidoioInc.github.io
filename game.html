@@ -97,14 +97,27 @@ title: Game
       }
 
       function checkCollisions() {
+        // X-AXIS CHECK
+        
+
+        // UP INTO COLLISION
+        if (dy > 0) {
+          if (y + dy + sizeY >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize && y + dy + sizeY <= canvas.height - (gy*(canvas.height/numVertBars))) {
+            console.log("Up into collision");
+            dy = 0;
+          }
         }
 
-        if (dy < 0 && y >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize && y <= canvas.height - (gy*(canvas.height/numVertBars))) {
-          console.log("down intersect");
-          onGround = true;
-          friction();
+        // DOWN INTO COLLISION
+        if (dy < 0) {
+          if (y + dy >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize && y + dy <= canvas.height - (gy*(canvas.height/numVertBars)))
+          console.log("Down into collision");
           dy = 0;
+          onGround = true;
         }
+
+        // SIDEWAYS INTO COLLISION
+
       }
 
       function friction() {
