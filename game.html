@@ -71,60 +71,6 @@ title: Game
         cyclenum++;
       }
 
-      function load() {
-        context.textBaseline="middle";
-        context.font="20px Arial";
-        context.fillStyle="#E8E6E8";
-        context.fillText("Loading...", canvas.width/2, canvas.height/2 - 20);
-        context.fillStyle="#333333";
-        context.fillRect(canvas.width/5, canvas.height/2 - 8, 3*canvas.width/5, 12);
-        context.fillStyle="#68FF5C";
-
-        var steps = 9;
-
-        var img = new Image();
-        img.src = "/assets/img/rafiL1.png";
-        context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
-        context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(1/steps), 10);
-        await sleep(500);
-        img.src = "/assets/img/rafiL2.png";
-        context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
-        context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(2/steps), 10);
-        await sleep(500);
-        img.src = "/assets/img/rafiL3.png";
-        context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
-        context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(3/steps), 10);
-        await sleep(500);
-        img.src = "/assets/img/rafiLD.png";
-        context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
-        context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(4/steps), 10);
-        await sleep(500);
-        img.src = "/assets/img/rafiLJ.png";
-        context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
-        context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(5/steps), 10);
-        await sleep(500);
-        img.src = "/assets/img/rafiR1.png";
-        context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
-        context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(6/steps), 10);
-        await sleep(500);
-        img.src = "/assets/img/rafiR2.png";
-        context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
-        context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(7/steps), 10);
-        await sleep(500);
-        img.src = "/assets/img/rafiR3.png";
-        context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
-        context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(8/steps), 10);
-        await sleep(500);
-        img.src = "/assets/img/rafiRD.png";
-        context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
-        context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(1/steps), 10);
-        await sleep(500);
-        img.src = "/assets/img/rafiRJ.png";
-        context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
-        context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(9/steps), 10);
-        await sleep(500);
-      }
-
       function drawPerson() {
         var img = new Image();
         if (!faceR) {
@@ -283,6 +229,60 @@ title: Game
       function sleep(var ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
       }
+
+      // function load() {
+      //   context.textBaseline="middle";
+      //   context.font="20px Arial";
+      //   context.fillStyle="#E8E6E8";
+      //   context.fillText("Loading...", canvas.width/2, canvas.height/2 - 20);
+      //   context.fillStyle="#333333";
+      //   context.fillRect(canvas.width/5, canvas.height/2 - 8, 3*canvas.width/5, 12);
+      //   context.fillStyle="#68FF5C";
+      //
+      //   var steps = 9;
+      //
+      //   var img = new Image();
+      //   img.src = "/assets/img/rafiL1.png";
+      //   context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
+      //   context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(1/steps), 10);
+      //   await sleep(500);
+      //   img.src = "/assets/img/rafiL2.png";
+      //   context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
+      //   context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(2/steps), 10);
+      //   await sleep(500);
+      //   img.src = "/assets/img/rafiL3.png";
+      //   context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
+      //   context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(3/steps), 10);
+      //   await sleep(500);
+      //   img.src = "/assets/img/rafiLD.png";
+      //   context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
+      //   context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(4/steps), 10);
+      //   await sleep(500);
+      //   img.src = "/assets/img/rafiLJ.png";
+      //   context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
+      //   context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(5/steps), 10);
+      //   await sleep(500);
+      //   img.src = "/assets/img/rafiR1.png";
+      //   context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
+      //   context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(6/steps), 10);
+      //   await sleep(500);
+      //   img.src = "/assets/img/rafiR2.png";
+      //   context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
+      //   context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(7/steps), 10);
+      //   await sleep(500);
+      //   img.src = "/assets/img/rafiR3.png";
+      //   context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
+      //   context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(8/steps), 10);
+      //   await sleep(500);
+      //   img.src = "/assets/img/rafiRD.png";
+      //   context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
+      //   context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(1/steps), 10);
+      //   await sleep(500);
+      //   img.src = "/assets/img/rafiRJ.png";
+      //   context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height/2 - sizeY/2, sizeX, sizeY);
+      //   context.fillRect(canvas.width/5+2, canvas.height/2-5, (3*canvas.width/5 - 4)*(9/steps), 10);
+      //   await sleep(500);
+      // }
 
       // load();
       setInterval(cycle, 10);
