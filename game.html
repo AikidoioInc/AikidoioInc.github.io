@@ -37,7 +37,7 @@ title: Game
       var dy = 0.0;
       var maxd = 20.0
 
-      var sizeX = 60;
+      var sizeX = 30;
       var sizeY = 60;
       var onGround = true;
       var uPress = false;
@@ -66,8 +66,8 @@ title: Game
 
       function drawPerson() {
         var img = new Image();
-        if (!faceR) img.src = "/assets/img/chadL.png";
-        if (faceR) img.src = "/assets/img/chadR.png";
+        if (!faceR) img.src = "/assets/img/rafiL.png";
+        if (faceR) img.src = "/assets/img/rafiR.png";
         context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height - y - sizeY, sizeX, sizeY);
       }
 
