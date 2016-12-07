@@ -44,6 +44,8 @@ title: Game
       var lPress = false;
       var rPress = false;
 
+      var frame = 0;
+
       var mu = 6.0;
 
       document.addEventListener("keydown", keyDownHandler, false);
@@ -61,13 +63,25 @@ title: Game
         x += dx;
         y += dy;
 
+        if (Math.abs(dx) == 0) frame = 0;
+        if (Math.abs(dx) > 0) frame++;
+        frame%3 = 0;
+
         cyclenum++;
       }
 
       function drawPerson() {
         var img = new Image();
-        if (!faceR) img.src = "/assets/img/rafiL.png";
-        if (faceR) img.src = "/assets/img/rafiR.png";
+        if (!faceR) {
+          if (frame == 0) img.src = "/assets/img/rafiL1.png";
+          if (frame == 1) img.src = "/assets/img/rafiL2.png";
+          if (frame == 2) img.src = "/assets/img/rafiL3.png";
+        }
+        if (faceR) {
+          if (frame == 0) img.src = "/assets/img/rafiR1.png";
+          if (frame == 1) img.src = "/assets/img/rafiR2.png";
+          if (frame == 2) img.src = "/assets/img/rafiR3.png";
+        }
         context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height - y - sizeY, sizeX, sizeY);
       }
 
