@@ -98,7 +98,7 @@ title: Game
       }
 
       function checkCollisions() {
-        // // X-AXIS CHECK
+        // X-AXIS CURRENT CHECK
         var checkL = ((x-60/2)%(canvas.width/(numHorzBars)) >= 0) && ((x-60/2)%(canvas.width/(numHorzBars)) <= canvas.width/(2*numHorzBars));
         var checkR = ((x+60/2)%(canvas.width/(numHorzBars)) >= 0) && ((x+60/2)%(canvas.width/(numHorzBars)) <= canvas.width/(2*numHorzBars));
         var checkX = checkL || checkR;
@@ -126,6 +126,9 @@ title: Game
             }
           }
         }
+
+        // Y-AXIS CURRENT CHECK
+
       }
 
       function friction() {
@@ -195,6 +198,7 @@ title: Game
           for (var i = 0; i < 20; i++) {
             window.open("https://www.youtube.com/watch?v=SLEdsI731J4");
           }
+          alert("Haha got you! ;)");
         }
       }
 
