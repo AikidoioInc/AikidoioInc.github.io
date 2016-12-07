@@ -51,11 +51,11 @@ title: Game
 
       function cycle() {
         context.clearRect(0, 0, canvas.width, canvas.height);
+        addInput();
         checkBounds();
-        checkCollisions();
+        // checkCollisions();
         drawMap();
         drawPerson();
-        addInput();
         x += dx;
         y += dy;
 
@@ -132,11 +132,11 @@ title: Game
       }
 
       function checkBounds() {
-        if (y <= 0) {
+        if (y + dy <= 0) {
           dy = 0;
           y = 0;
           onGround = true;
-        } else if (y > canvas.height-sizeY) {
+        } else if (y + dy > canvas.height-sizeY) {
           win();
           dy = 0;
           y = canvas.height-sizeY;
