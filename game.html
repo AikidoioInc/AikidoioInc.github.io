@@ -61,8 +61,6 @@ title: Game
         x += dx;
         y += dy;
 
-        console.log(onGround);
-
         cyclenum++;
       }
 
@@ -118,10 +116,11 @@ title: Game
 
           // DOWN INTO COLLISION
           if (dy < 0) {
-            if (y + dy >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize && y + dy <= canvas.height - (gy*(canvas.height/numVertBars)))
-            console.log("Down into collision");
-            dy = 0;
-            onGround = true;
+            if (y + dy >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize && y + dy <= canvas.height - (gy*(canvas.height/numVertBars))) {
+              console.log("Down into collision");
+              dy = 0;
+              onGround = true;
+            }
           }
         }
       }
@@ -143,7 +142,6 @@ title: Game
           dy = 0;
           y = canvas.height-sizeY;
         } else {
-          console.log("Please notice me senpai");
           onGround = false;
         }
 
