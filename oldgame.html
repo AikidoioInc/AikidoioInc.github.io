@@ -48,6 +48,8 @@ title: Game
       var lPress = false;
       var rPress = false;
 
+      var played = false;
+
       document.addEventListener("keydown", keyDownHandler, false);
       document.addEventListener("keyup", keyUpHandler, false);
 
@@ -72,7 +74,8 @@ title: Game
       function sugoi() {
         var numA = 7;
 
-        if (Math.round(score) % 50 == 0 && Math.round(score) != 0) {
+        if (Math.round(score) % 50 == 0 && Math.round(score) != 0 && !played) {
+          played = true;
           console.log("fastu");
           var rand = Math.random();
           if (rand < 1.0/numA) {
@@ -90,6 +93,10 @@ title: Game
           } else if (rand < 7.0/numA) {
             new Audio("/assets/audio/japs/totemo.mp3").play()
           }
+        }
+
+        if (Math.round(score) % 50 == 1 && played) {
+          played = false;
         }
       }
 
