@@ -107,7 +107,7 @@ title: Game
                 console.log("up intersect");
                 dy = 0;
               }
-              if (y >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize - sizeY && y <= canvas.height - (gy*(canvas.height/numVertBars))) {
+              if (y >= canvas.height - (gy*(canvas.height/numVertBars)) - sizeY && y <= canvas.height - (gy*(canvas.height/numVertBars)) + gridSize) {
                 console.log("up intersect");
                 dy = 0;
                 dx = 0;
