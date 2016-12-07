@@ -37,7 +37,8 @@ title: Game
       var dy = 0.0;
       var maxd = 20.0
 
-      var size = 60;
+      var sizeX = 60;
+      var sizeY = 60;
       var onGround = true;
       var uPress = false;
       var lPress = false;
@@ -66,7 +67,7 @@ title: Game
         var img = new Image();
         if (!faceR) img.src = "/assets/img/chadL.png";
         if (faceR) img.src = "/assets/img/chadR.png";
-        context.drawImage(img, canvas.width/2 - size/2, canvas.height - y - size, size, size);
+        context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height - y - sizeY, sizeX, sizeY);
       }
 
       function drawMap() {
@@ -99,7 +100,7 @@ title: Game
         for (var gx = 0; gx < numHorzBars+1; gx++) {
           if (x <= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars) && x >= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars + canvas.width/(2*numHorzBars))) {
             for (var gy = 1; gy < numVertBars; gy++) {
-              if (dy > 0 && y >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize - size && y <= canvas.height - (gy*(canvas.height/numVertBars)) - size) {
+              if (dy > 0 && y >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize - sizeY && y <= canvas.height - (gy*(canvas.height/numVertBars)) - sizeY) {
                 console.log("up intersect");
                 dy = 0;
               }
@@ -126,10 +127,10 @@ title: Game
           dy = 0;
           y = 0;
           onGround = true;
-        } else if (y > canvas.height-size) {
+        } else if (y > canvas.height-sizeY) {
           win();
           dy = 0;
-          y = canvas.height-size;
+          y = canvas.height-sizeY;
         } else {
           onGround = false;
         }
