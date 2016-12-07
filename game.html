@@ -79,10 +79,12 @@ title: Game
         img.src = "/assets/img/rafiL2.png";
         img.src = "/assets/img/rafiL3.png";
         img.src = "/assets/img/rafiLD.png";
+        img.src = "/assets/img/rafiLJ.png";
         img.src = "/assets/img/rafiR1.png";
         img.src = "/assets/img/rafiR2.png";
         img.src = "/assets/img/rafiR3.png";
         img.src = "/assets/img/rafiRD.png";
+        img.src = "/assets/img/rafiRJ.png";
       }
 
       function drawPerson() {
@@ -92,12 +94,14 @@ title: Game
           if (frame >= 10 && frame < 20) img.src = "/assets/img/rafiL2.png";
           if (frame >= 20 && frame < 30) img.src = "/assets/img/rafiL3.png";
           if (dx == 0 && dPress) img.src = "/assets/img/rafiLD.png";
+          if (!onGround) img.src = "/assets/img/rafiLJ";
         }
         if (faceR) {
           if (frame >= 00 && frame < 10) img.src = "/assets/img/rafiR1.png";
           if (frame >= 10 && frame < 20) img.src = "/assets/img/rafiR2.png";
           if (frame >= 20 && frame < 30) img.src = "/assets/img/rafiR3.png";
           if (dx == 0 && dPress) img.src = "/assets/img/rafiRD.png";
+          if (!onGround) img.src = "/assets/img/rafiRJ";
         }
         context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height - y - sizeY, sizeX, sizeY);
       }
