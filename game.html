@@ -9,6 +9,8 @@ title: Game
   </div>
 </div>
 
+<div onload="loadImages()" />
+
 <div class="row">
   <div class="small-12 columns" style="text-align:center">
     <canvas id="game" width="800" height="500" style="background-color:#bbbbbb; border-style:solid; border-width:2px; border-color:#888888;">
@@ -72,8 +74,6 @@ title: Game
       }
 
       function loadImages() {
-        // REPLACED BY HIDDEN DIV
-
         var img = new Image();
         img.src = "/assets/img/rafiL1.png";
         context.drawImage(img, canvas.width*2, 0, sizeX, sizeY);
@@ -262,18 +262,4 @@ title: Game
   <div class="small-12 columns">
     <h6><span title="Press S to dab">Use WAD to move. Try to make it to the top.</span></h6>
   </div>
-</div>
-
-<!-- IMAGE PRELOADING -->
-<div style="display: none">
-  <img src="/assets/img/rafiL1" style="width:1px;height1px" />
-  <img src="/assets/img/rafiL2" style="width:1px;height1px" />
-  <img src="/assets/img/rafiL3" style="width:1px;height1px" />
-  <img src="/assets/img/rafiLD" style="width:1px;height1px" />
-  <img src="/assets/img/rafiLJ" style="width:1px;height1px" />
-  <img src="/assets/img/rafiR1" style="width:1px;height1px" />
-  <img src="/assets/img/rafiR2" style="width:1px;height1px" />
-  <img src="/assets/img/rafiR3" style="width:1px;height1px" />
-  <img src="/assets/img/rafiRD" style="width:1px;height1px" />
-  <img src="/assets/img/rafiRJ" style="width:1px;height1px" />
 </div>
