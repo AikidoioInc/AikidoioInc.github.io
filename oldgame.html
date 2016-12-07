@@ -75,9 +75,21 @@ title: Game
         if (Math.round(score) % 50 == 0 && Math.round(score) != 0) {
           console.log("fastu");
           var rand = Math.random();
-          // if (rand < 1.0/numA) {
+          if (rand < 1.0/numA) {
             new Audio("/assets/audio/japs/fastu.mp3").play()
-          // }
+          } else if (rand < 2.0/numA) {
+            new Audio("/assets/audio/japs/KAWAII.mp3").play()
+          } else if (rand < 3.0/numA) {
+            new Audio("/assets/audio/japs/METALGEAR.mp3").play()
+          } else if (rand < 4.0/numA) {
+            new Audio("/assets/audio/japs/NICEDRIVING.mp3").play()
+          } else if (rand < 5.0/numA) {
+            new Audio("/assets/audio/japs/RACETRACK.mp3").play()
+          } else if (rand < 6.0/numA) {
+            new Audio("/assets/audio/japs/RASENGAN.mp3").play()
+          } else if (rand < 7.0/numA) {
+            new Audio("/assets/audio/japs/totemo.mp3").play()
+          }
         }
       }
 
