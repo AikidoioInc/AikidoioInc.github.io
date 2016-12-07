@@ -99,16 +99,7 @@ title: Game
 
       function checkCollisions() {
         // // X-AXIS CHECK
-        var checkR;
-        var checkL;
-
-        for (var gx = 0; gx < numHorzBars+1; gx++) {
-          var checkR = x + sizeX/2 >= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars + canvas.width/(2*numHorzBars)) && x + sizeX/2 <= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars);
-          // var checkL = x - sizeX/2 >= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars + canvas.width/(2*numHorzBars)) && x - sizeX/2 <= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars);
-          //
-        }
-        
-        var checkX = checkR || checkL;
+        var checkX = (x%(canvas.width/(numHorzBars)) >= canvas.width/(2*numHorzBars) && (x%(canvas.width/(numHorzBars)) <= canvas.width/(1*numHorzBars);
 
         // Y-AXIS CHECK
         if (checkX) {
