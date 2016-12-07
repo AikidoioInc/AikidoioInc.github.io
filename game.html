@@ -41,6 +41,7 @@ title: Game
       var sizeY = 60;
       var onGround = true;
       var uPress = false;
+      var dPress = false;
       var lPress = false;
       var rPress = false;
 
@@ -76,11 +77,13 @@ title: Game
           if (frame >= 00 && frame < 10) img.src = "/assets/img/rafiL1.png";
           if (frame >= 10 && frame < 20) img.src = "/assets/img/rafiL2.png";
           if (frame >= 20 && frame < 30) img.src = "/assets/img/rafiL3.png";
+          if (dx == 0 && dPress) img.src = "/assets/img/rafiLD";
         }
         if (faceR) {
           if (frame >= 00 && frame < 10) img.src = "/assets/img/rafiR1.png";
           if (frame >= 10 && frame < 20) img.src = "/assets/img/rafiR2.png";
           if (frame >= 20 && frame < 30) img.src = "/assets/img/rafiR3.png";
+          if (dx == 0 && dPress) img.src = "/assets/img/rafiRD";
         }
         context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height - y - sizeY, sizeX, sizeY);
       }
@@ -187,6 +190,8 @@ title: Game
       function keyDownHandler(e) {
         if (e.keyCode == 87) {
           uPress = true;
+        } else if (e.keyCode == 83) {
+          dPress = true;
         } else if (e.keyCode == 65) {
           lPress = true;
         } else if (e.keyCode == 68) {
@@ -197,6 +202,8 @@ title: Game
       function keyUpHandler(e) {
         if (e.keyCode == 87) {
           uPress = false;
+        } else if (e.keyCode == 83) {
+          dPress = false;
         } else if (e.keyCode == 65) {
           lPress = false;
         } else if (e.keyCode == 68) {
