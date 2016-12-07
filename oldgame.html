@@ -72,7 +72,7 @@ title: Game
       function sugoi() {
         var numA = 7;
 
-        if (score % 50 == 0) {
+        if (Math.round(score) % 50 == 0 && Math.round(score) != 0) {
           console.log("fastu");
           var rand = Math.random();
           // if (rand < 1.0/numA) {
