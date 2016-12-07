@@ -53,7 +53,7 @@ title: Game
         context.clearRect(0, 0, canvas.width, canvas.height);
         addInput();
         checkBounds();
-        // checkCollisions();
+        checkCollisions();
         drawMap();
         drawPerson();
         x += dx;
@@ -98,7 +98,7 @@ title: Game
 
       function checkCollisions() {
         // X-AXIS CHECK
-        
+
 
         // UP INTO COLLISION
         if (dy > 0) {
