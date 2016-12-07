@@ -49,6 +49,8 @@ title: Game
 
       var mu = 6.0;
 
+      loadImages();
+
       document.addEventListener("keydown", keyDownHandler, false);
       document.addEventListener("keyup", keyUpHandler, false);
 
@@ -69,6 +71,18 @@ title: Game
         frame = frame%30;
 
         cyclenum++;
+      }
+
+      function loadImages() {
+        var img = new Image();
+        img.src = "/assets/img/rafiL1.png";
+        img.src = "/assets/img/rafiL2.png";
+        img.src = "/assets/img/rafiL3.png";
+        img.src = "/assets/img/rafiLD.png";
+        img.src = "/assets/img/rafiR1.png";
+        img.src = "/assets/img/rafiR2.png";
+        img.src = "/assets/img/rafiR3.png";
+        img.src = "/assets/img/rafiRD.png";
       }
 
       function drawPerson() {
