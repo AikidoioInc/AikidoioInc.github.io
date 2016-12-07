@@ -65,7 +65,7 @@ title: Game
 
         if (Math.abs(dx) == 0) frame = 0;
         if (Math.abs(dx) > 0) frame++;
-        frame%30 = 0;
+        frame = frame%30 = 0;
 
         cyclenum++;
       }
