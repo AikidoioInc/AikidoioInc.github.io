@@ -59,7 +59,7 @@ title: Game
         x += dx;
         y += dy;
 
-        dy -= 0.1;
+        if (!onGround) dy -= 0.1;
         cyclenum++;
       }
 
