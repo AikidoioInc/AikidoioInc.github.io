@@ -110,7 +110,9 @@ title: Game
               if (y >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize - sizeY && y <= canvas.height - (gy*(canvas.height/numVertBars))) {
                 console.log("up intersect");
                 dy = 0;
-                dx = rPress ? -0.2 : 0.2;
+                if (rPress) dx = -0.2;
+                if (lPress) dx = 0.2;
+                if (!rPress && !lPress) dx = 0;
               }
             }
           }
