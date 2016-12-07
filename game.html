@@ -103,20 +103,19 @@ title: Game
 
           if (checkR || checkL) {
             for (var gy = 1; gy < numVertBars; gy++) {
-              if (dy > 0 && y >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize - sizeY && y <= canvas.height - (gy*(canvas.height/numVertBars)) - sizeY) {
+              if (y >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize - sizeY && y <= canvas.height - (gy*(canvas.height/numVertBars))) {
                 console.log("up intersect");
                 dy = 0;
               }
             }
-            for (var gy = 1; gy < numVertBars; gy++) {
-              if (dy < 0 && y >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize && y <= canvas.height - (gy*(canvas.height/numVertBars))) {
-                console.log("down intersect");
-                onGround = true;
-                friction();
-                dy = 0;
-              }
-            }
           }
+        }
+
+        if (dy < 0 && y >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize && y <= canvas.height - (gy*(canvas.height/numVertBars))) {
+          console.log("down intersect");
+          onGround = true;
+          friction();
+          dy = 0;
         }
       }
 
