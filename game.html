@@ -49,8 +49,6 @@ title: Game
 
       var mu = 6.0;
 
-      load();
-
       document.addEventListener("keydown", keyDownHandler, false);
       document.addEventListener("keyup", keyUpHandler, false);
 
@@ -79,7 +77,7 @@ title: Game
         context.fillStyle="#E8E6E8";
         context.fillText("Loading...", canvas.width/2, canvas.height/2 - 20);
         context.fillStyle="#333333";
-        context.fillRect(canvas.width/5, canvas.height/2 - 6, 3*canvas.width/5, 12);
+        context.fillRect(canvas.width/5, canvas.height/2 - 8, 3*canvas.width/5, 12);
         context.fillStyle="#68FF5C";
 
         var steps = 9;
@@ -286,6 +284,7 @@ title: Game
         return new Promise(resolve => setTimeout(resolve, ms));
       }
 
+      load();
       setInterval(cycle, 10);
       </script>
     </canvas>
