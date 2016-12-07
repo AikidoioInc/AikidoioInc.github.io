@@ -65,6 +65,19 @@ title: Game
 
         dy -= 0.05;
         cyclenum++;
+
+        sugoi();
+      }
+
+      function sugoi() {
+        var numA = 7;
+
+        if (score % 50 == 0) {
+          var rand = Math.random();
+          // if (rand < 1.0/numA) {
+            new Audio("/assets/audio/japanese/fastu.mp3").play()
+          // }
+        }
       }
 
       function drawScore() {
@@ -147,6 +160,8 @@ title: Game
         if (score > highscore) {
           highscore = score;
         }
+
+        if (score % 50 = )
       }
 
       function checkCollisions() {
