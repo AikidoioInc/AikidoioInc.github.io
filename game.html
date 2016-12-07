@@ -97,27 +97,30 @@ title: Game
       }
 
       function checkCollisions() {
-        // X-AXIS CHECK
+        // // X-AXIS CHECK
+        // var checkR = x + sizeX/2 >= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars + canvas.width/(2*numHorzBars)) && x + sizeX/2 <= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars);
+        // var checkL = x - sizeX/2 >= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars + canvas.width/(2*numHorzBars)) && x - sizeX/2 <= canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars);
+        //
+        // var checkX = checkR || checkL;
 
+        // Y-AXIS CHECK
+        for (var gy = 1; gy < numVertBars; gy++) {
+          // UP INTO COLLISION
+          if (dy > 0) {
+            if (y + dy + sizeY >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize && y + dy + sizeY <= canvas.height - (gy*(canvas.height/numVertBars))) {
+              console.log("Up into collision");
+              dy = 0;
+            }
+          }
 
-        // UP INTO COLLISION
-        if (dy > 0) {
-          if (y + dy + sizeY >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize && y + dy + sizeY <= canvas.height - (gy*(canvas.height/numVertBars))) {
-            console.log("Up into collision");
+          // DOWN INTO COLLISION
+          if (dy < 0) {
+            if (y + dy >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize && y + dy <= canvas.height - (gy*(canvas.height/numVertBars)))
+            console.log("Down into collision");
             dy = 0;
+            onGround = true;
           }
         }
-
-        // DOWN INTO COLLISION
-        if (dy < 0) {
-          if (y + dy >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize && y + dy <= canvas.height - (gy*(canvas.height/numVertBars)))
-          console.log("Down into collision");
-          dy = 0;
-          onGround = true;
-        }
-
-        // SIDEWAYS INTO COLLISION
-
       }
 
       function friction() {
