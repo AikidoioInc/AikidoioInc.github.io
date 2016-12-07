@@ -56,10 +56,11 @@ title: Game
         checkCollisions();
         drawMap();
         drawPerson();
+        if (!onGround) dy -= 0.1;
+
         x += dx;
         y += dy;
 
-        if (!onGround) dy -= 0.1;
         cyclenum++;
       }
 
