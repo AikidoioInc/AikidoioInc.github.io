@@ -131,10 +131,12 @@ title: Game
 
       function checkBounds() {
         if (y + dy <= 0) {
+          console.log("On ground");
           dy = 0;
           y = 0;
           onGround = true;
         } else if (y + dy > canvas.height-sizeY) {
+          console.log("On roof");
           win();
           dy = 0;
           y = canvas.height-sizeY;
