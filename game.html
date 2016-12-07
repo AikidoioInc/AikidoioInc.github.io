@@ -111,6 +111,7 @@ title: Game
             if (y + dy + sizeY >= canvas.height - (gy*(canvas.height/numVertBars)) - gridSize && y + dy + sizeY <= canvas.height - (gy*(canvas.height/numVertBars))) {
               console.log("Up into collision");
               dy = 0;
+              y = canvas.height - (gy*(canvas.height/numVertBars)) - gridSize - sizeY;
             }
           }
 
