@@ -105,23 +105,26 @@ title: Game
 
         // COMPLICATED MAP
 
-        // for (var gx = 0; gx < map.length; gx++) {
-        //   for (var gy = 0; gy < canvas.height/gridSize; gy++) {
-        //     if (map[gx][gy] == 1) {
+        for (var gx = 0; gx < map.length; gx++) {
+          for (var gy = 0; gy < canvas.height/gridSize; gy++) {
+            if (map[gx][gy] == 1) {
               context.fillStyle = "#333333";
-        //       context.fillRect(gx*gridSize-(x-canvas.width/2), canvas.height - gy*gridSize - gridSize, gridSize, gridSize);
-        //       context.fillRect((gx+map.length)*gridSize-(x-canvas.width/2), canvas.height - gy*gridSize - gridSize, gridSize, gridSize);
-        //       context.fillRect((gx-map.length)*gridSize-(x-canvas.width/2), canvas.height - gy*gridSize - gridSize, gridSize, gridSize);
-        //     }
-        //   }
-        var numHorzBars = 4;
-        var numVertBars = 5;
-
-        for (var gx = 0; gx < numHorzBars+1; gx++) {
-          for (var gy = 0; gy < numVertBars; gy++) {
-            context.fillRect(canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars), canvas.height - (gy*(canvas.height/numVertBars)), canvas.width/(2*numHorzBars), gridSize);
+              context.fillRect(gx*gridSize-(x-canvas.width/2), canvas.height - gy*gridSize - gridSize, gridSize, gridSize);
+              context.fillRect((gx+map.length)*gridSize-(x-canvas.width/2), canvas.height - gy*gridSize - gridSize, gridSize, gridSize);
+              context.fillRect((gx-map.length)*gridSize-(x-canvas.width/2), canvas.height - gy*gridSize - gridSize, gridSize, gridSize);
+            }
           }
-        }
+
+        // SIMPLE MAP
+
+        // var numHorzBars = 4;
+        // var numVertBars = 5;
+        //
+        // for (var gx = 0; gx < numHorzBars+1; gx++) {
+        //   for (var gy = 0; gy < numVertBars; gy++) {
+        //     context.fillRect(canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars), canvas.height - (gy*(canvas.height/numVertBars)), canvas.width/(2*numHorzBars), gridSize);
+        //   }
+        // }
       }
 
       function addInput() {
