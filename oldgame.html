@@ -48,6 +48,8 @@ title: Game
       var lPress = false;
       var rPress = false;
 
+      var played = false;
+
       document.addEventListener("keydown", keyDownHandler, false);
       document.addEventListener("keyup", keyUpHandler, false);
 
@@ -65,6 +67,37 @@ title: Game
 
         dy -= 0.05;
         cyclenum++;
+
+        sugoi();
+      }
+
+      function sugoi() {
+        var numA = 7;
+
+        if (Math.round(score) % 50 == 0 && Math.round(score) != 0 && !played) {
+          played = true;
+          console.log("fastu");
+          var rand = Math.random();
+          if (rand < 1.0/numA) {
+            new Audio("/assets/audio/japs/fastu.mp3").play()
+          } else if (rand < 2.0/numA) {
+            new Audio("/assets/audio/japs/KAWAII.mp3").play()
+          } else if (rand < 3.0/numA) {
+            new Audio("/assets/audio/japs/METALGEAR.mp3").play()
+          } else if (rand < 4.0/numA) {
+            new Audio("/assets/audio/japs/NICEDRIVING.mp3").play()
+          } else if (rand < 5.0/numA) {
+            new Audio("/assets/audio/japs/RACETRACK.mp3").play()
+          } else if (rand < 6.0/numA) {
+            new Audio("/assets/audio/japs/RASENGAN.mp3").play()
+          } else if (rand < 7.0/numA) {
+            new Audio("/assets/audio/japs/totemo.mp3").play()
+          }
+        }
+
+        if (Math.round(score) % 50 == 49 && played) {
+          played = false;
+        }
       }
 
       function drawScore() {
