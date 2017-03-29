@@ -1,0 +1,167 @@
+---
+layout: default
+title: Dodge
+---
+
+<div class="row">
+  <div class="small-12 columns">
+    <h2>Game of the Year 2050</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns" style="text-align:center">
+    <canvas id="game" width="800" height="500" style="background-color:#bbbbbb; border-style:solid; border-width:2px; border-color:#888888;">
+      <script>
+      console.log("Dodge v0.0.0");
+
+      var score = 0;
+      var highscore = 0;
+
+      function cycle() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        addInput();
+        checkBounds();
+        checkCollisions();
+        drawMap();
+        drawPerson();
+        if (!onGround) dy -= 0.1;
+
+        x += dx;
+        y += dy;
+
+        if (Math.abs(dx) == 0) frame = 0;
+        if (Math.abs(dx) > 0) frame++;
+        frame = frame%30;
+
+        cyclenum++;
+      }
+
+      function drawPerson() {
+        var img = new Image();
+        if (!faceR) {
+          if (frame >= 00 && frame < 10) img.src = "/assets/img/rafiL1.png";
+          if (frame >= 10 && frame < 20) img.src = "/assets/img/rafiL2.png";
+          if (frame >= 20 && frame < 30) img.src = "/assets/img/rafiL3.png";
+          if (dx == 0 && dPress) img.src = "/assets/img/rafiLD.png";
+          // if (!onGround) img.src = "/assets/img/rafiLJ.png";
+        }
+        if (faceR) {
+          if (frame >= 00 && frame < 10) img.src = "/assets/img/rafiR1.png";
+          if (frame >= 10 && frame < 20) img.src = "/assets/img/rafiR2.png";
+          if (frame >= 20 && frame < 30) img.src = "/assets/img/rafiR3.png";
+          if (dx == 0 && dPress) img.src = "/assets/img/rafiRD.png";
+          // if (!onGround) img.src = "/assets/img/rafiRJ.png";
+        }
+        context.drawImage(img, canvas.width/2 - sizeX/2, canvas.height - y - sizeY, sizeX, sizeY);
+      }
+
+      function drawMap() {
+        context.fillStyle = "#333333";
+
+        for (var gx = 0; gx < numHorzBars*2+1; gx++) {
+          for (var gy = 1; gy < numVertBars; gy++) {
+            context.fillRect(canvas.width - (x%(canvas.width/(numHorzBars))+gx*canvas.width/numHorzBars), canvas.height - (gy*(canvas.height/numVertBars)), canvas.width/(2*numHorzBars), gridSize);
+          }
+        }
+      }
+
+      function addInput() {
+        var accel = 0.2;
+
+        if (rPress) dx += accel * ((maxd - Math.abs(dx))/maxd);
+        if (lPress) dx -= accel * ((maxd - Math.abs(dx))/maxd);
+        if (uPress && onGround) dy = 5;
+
+        // FLYING POWERS
+        // if (uPress) dy += 0.2;
+
+        friction();
+
+        if (dx > 0) faceR = true;
+        if (dx < 0) faceR = false;
+      }
+
+      function checkCollisions() {
+
+      }
+
+      function checkBounds() {
+        if (y + dy <= 0) {
+          console.log("On ground");
+          dy = 0;
+          y = 0;
+          onGround = true;
+        } else if (y + dy > canvas.height-sizeY) {
+          console.log("On roof");
+          win();
+          dy = 0;
+          y = canvas.height-sizeY;
+        } else {
+          onGround = false;
+        }
+
+        if (x - dx < 0) {
+          x = canvas.width - (x - dx);
+        } else if (x + dx > canvas.width) {
+          x = 0 + (x + dx - canvas.width);
+        }
+
+        if (dx > maxd) {
+          dx = maxd;
+        } else if (dx < -maxd) {
+          dx = -maxd;
+        }
+
+        if (dy > maxd) {
+          dy = maxd;
+        } else if (dy < -maxd) {
+          dy = -maxd;
+        }
+      }
+
+      function keyDownHandler(e) {
+        if (e.keyCode == 87) {
+          uPress = true;
+        } else if (e.keyCode == 83) {
+          dPress = true;
+        } else if (e.keyCode == 65) {
+          lPress = true;
+        } else if (e.keyCode == 68) {
+          rPress = true;
+        }
+      }
+
+      function keyUpHandler(e) {
+        if (e.keyCode == 87) {
+          uPress = false;
+        } else if (e.keyCode == 83) {
+          dPress = false;
+        } else if (e.keyCode == 65) {
+          lPress = false;
+        } else if (e.keyCode == 68) {
+          rPress = false;
+        }
+      }
+
+      function win() {
+        var r = confirm("You win!");
+        if (r) {
+          window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+        } else {
+          window.open("https://www.youtube.com/watch?v=bLHL75H_VEM");
+          alert("im sorry");
+        }
+      }
+
+      setInterval(cycle, 10);
+      </script>
+    </canvas>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h6><span title="Press S to dab">Use WAD to move. Try to make it to the top.</span></h6>
+  </div>
+</div>

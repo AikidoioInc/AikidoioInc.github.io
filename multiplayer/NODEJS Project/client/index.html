@@ -1,0 +1,169 @@
+<!-- Gregory Jerian -->
+<!-- CS Capstone 3rd Period -->
+
+<!-- Sign in Container -->
+<div id="signDiv">
+	Username: <input id="signDiv-username" type="text"></input><br>
+	Password: <input id="signDiv-password" type="password"></input>
+	<button id="signDiv-signIn">Sign In</button>
+	<button id="signDiv-signUp">Sign Up</button>
+</div>
+
+<!-- Game container -->
+<div id = "gameDiv" style="display:none;">
+	<!-- Draws a canvas -->
+	<canvas id="canvas" width="500" height="500" style="border:1px solid black;"></canvas>
+
+	<!-- Adds a chat box with a sexy scroll bar -->
+	<div id="chat-text" style="width:500px;height:100px;overflow-y:scroll">
+		<div>Meme box</div>
+	</div>
+	<form id="chat-form">
+		<input id="chat-input" type="text" style="width:500px"></input>
+	</form>
+</div>
+
+Hello world
+
+<!-- Imports socket.io file -->
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+<!-- JS code important to receiving and emitting connections -->
+<script>
+	// Calls the io() method every time a new client connects.
+	var socket = io();
+	/** EVERYTHING RELATED TO SIGN IN */
+	var signDiv = document.getElementById("signDiv");
+	var signDivUsername = document.getElementById("signDiv-username");
+	var signDivSignIn = document.getElementById("signDiv-signIn");
+	var signDivSignUp = document.getElementById("signDiv-signUp");
+	var signDivPassword = document.getElementById("signDiv-password");
+
+	// When we click on sign in button send a signIn package to the server
+	signDivSignIn.onclick = function() {
+		socket.emit("signIn", {username:signDivUsername.value, password:signDivPassword.value});
+	}
+	// When we click on sign up button send a signUp package to the server
+	signDivSignUp.onclick = function() {
+		socket.emit("signUp", {username:signDivUsername.value, password:signDivPassword.value});
+	}
+	
+	// Activates upon receiving a sign in response
+	socket.on("signInResponse", function(data) {
+		if (data.success) {
+			signDiv.style.display = "none";
+			gameDiv.style.display = "inline-block";
+		}
+		else {
+			alert("Sign in unsuccessful");
+		}
+	});
+	
+	//Activates upon receiving a sign up response
+	socket.on("signUpResponse", function(data) {
+		if (data.success) {
+			alert("Sign up successful");
+		}
+		else {
+			alert("Sign up unsuccessful");
+		}
+	});
+	
+	
+	/** EVERYTHING RELATED TO GAME */
+	
+	// Create various chat elements
+	var chatText = document.getElementById("chat-text");
+	var chatInput = document.getElementById("chat-input");
+	var chatForm = document.getElementById("chat-form");
+	
+	// Create a canvas and set the font
+	var canvas = document.getElementById("canvas").getContext("2d");
+	canvas.font = "30px Arial";
+	
+	// Receiving the new position of sockets from the server
+	socket.on('newPositions', function(coords) {
+		// Clear the current canvas.
+		canvas.clearRect(0, 0, 500, 500);
+		
+		// Place the clients at their new positions.
+		for (var i = 0; i < coords.player.length; i++) {
+			canvas.fillText(coords.player[i].number, coords.player[i].x, coords.player[i].y);
+			//( ͡° ͜ʖ ͡°)
+		}
+		
+		// Code for bullets (WIP)
+		for (var i = 0; i < coords.bullet.length; i++) {
+			canvas.fillRect(coords.bullet[i].x-5, coords.bullet[i].y-5, 10, 10);
+		}
+	});
+	
+	// Inserts client's chat message into the textbox when it receives
+	// a "addToChat" message
+	socket.on("addToChat", function(data) {
+		chatText.innerHTML += "<div>" + data + "</div>";
+	});
+	
+	// Logs commands to console
+	socket.on("addCommand", function(data) {
+		console.log(data);
+	});
+	
+	// Submit box for chat
+	chatForm.onsubmit = function(e) {
+		// Stops enter key from refreshing the page.
+		e.preventDefault();
+		
+		// distinguishes if client is sending a command, which is
+		// preceded by a forward slash, or a regular chat message
+		if (chatInput.value[0] === "/") {
+			socket.emit("sendChatCommandToServer", chatInput.value.slice(1));
+		}
+		else {
+			socket.emit("sendChatMessageToServer", chatInput.value)
+		}
+		
+		// Resets chat message after it is sent
+		chatInput.value = "";
+	}
+	// Called when the client presses keys down
+	document.onkeydown = function(event) {
+		if (event.keyCode === 68) //d
+			socket.emit("keyPress", {inputId: "right", state:true});
+		if (event.keyCode === 83) //s
+			socket.emit("keyPress", {inputId: "down", state:true});
+		if (event.keyCode === 65) //a
+			socket.emit("keyPress", {inputId: "left", state:true});
+		if (event.keyCode === 87) //w
+			socket.emit("keyPress", {inputId: "up", state:true});
+	}
+	// Called when the client does not have keys down
+	document.onkeyup = function(event) {
+		if (event.keyCode === 68) //d
+			socket.emit("keyPress", {inputId: "right", state:false});
+		if (event.keyCode === 83) //s
+			socket.emit("keyPress", {inputId: "down", state:false});
+		if (event.keyCode === 65) //a
+			socket.emit("keyPress", {inputId: "left", state:false});
+		if (event.keyCode === 87) //w
+			socket.emit("keyPress", {inputId: "up", state:false});
+	}
+	// Called when the client presses the mouse down
+	document.onmousedown = function(event) {
+		socket.emit("keyPress", {inputId: "LMB", state:true});
+	}
+	// Called when the client is not pressing the mouse
+	document.onmouseup = function(event) {
+		socket.emit("keyPress", {inputId: "LMB", state:false});
+	}
+	// Called when the client is moving the mouse
+	document.onmousemove = function(event) {
+		// Takes the position of the client relative to the center.
+		// (canvas is 500x500)
+		var x = -250 + event.clientX - 8;
+		var y = -250 + event.clientY - 8;
+		// Finds arctangent of y/x and converts to degrees.
+		var angle = Math.atan2(y, x) / Math.PI * 180;
+		socket.emit("keyPress", {inputId: "mouseAngle", state: angle});
+	}
+</script>
