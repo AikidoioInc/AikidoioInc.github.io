@@ -145,6 +145,17 @@ var Player = function(id) {
 		superUpdate();
 	}
 
+	// Updates the position of the entity
+	self.updatePosition = function() {
+		self.x += self.speedX;
+		self.y += self.speedY;
+
+		if (self.y < 0) {
+			self.y = 0;
+			self.speedY = 0;
+		}
+	}
+
 	self.shootBullet = function(angle) {
 		// Creates the bullet
 		var b = Bullet(self.id, angle);
@@ -153,7 +164,6 @@ var Player = function(id) {
 		b.x = self.x;
 		b.y = self.y;
 	}
-
 
 	// Update positions based on values of variables
 	// set by client
@@ -173,6 +183,8 @@ var Player = function(id) {
 		} else {
 			self.speedY = 0;
 		}
+
+		self.speedY -= 0.02;
 	}
 	Player.list[id] = self;
 	return self;
