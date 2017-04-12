@@ -1,5 +1,7 @@
-/* Gregory Jerian
- * CS Capstone 3rd Period */
+/************************************
+     Gregory Jerian and Rafi Long
+        CS Capstone 3rd Period
+************************************/
 
 // File communication (Express)
 	// Client asks server for a file (EX: playerImg.png)
@@ -150,8 +152,8 @@ var Player = function(id) {
 		self.x += self.speedX;
 		self.y += self.speedY;
 
-		if (self.y < 0) {
-			self.y = 0;
+		if (self.y > 500) {
+			self.y = 500;
 			self.speedY = 0;
 		}
 	}
@@ -184,7 +186,7 @@ var Player = function(id) {
 			self.speedY = 0;
 		}
 
-		self.speedY -= 0.02;
+		self.speedY += 2;
 	}
 	Player.list[id] = self;
 	return self;
